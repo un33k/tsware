@@ -1,57 +1,39 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+.DS_STORE
 
-# C extensions
-*.so
+# Don’t commit the following directories created by pub.
+packages
+pubspec.lock
+.pub
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+/dist/
+.buildlog
+node_modules
+bower_components
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Or broccoli working directory
+tmp
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Or the files created by dart2js.
+*.dart.js
+*.dart.precompiled.js
+*.js_
+*.js.deps
+*.js.map
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
+# Or type definitions we mirror from github
+**/typings/**/*.d.ts
+**/typings/tsd.cached.json
 
-# Translations
-*.mo
-*.pot
+# Include when developing application packages.
+pubspec.lock
+.c9
+.idea/
+*.swo
 
-# Django stuff:
-*.log
+# Don't check in secret files
+*secret.js
 
-# Sphinx documentation
-docs/_build/
+# Ignore npm debug log
+npm-debug.log
 
-# PyBuilder
-target/
+/docs/bower_components/
