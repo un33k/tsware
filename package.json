@@ -30,6 +30,6 @@
     "gulp-tsd": "0.0.4",
     "gulp-tslint": "^1.4.3",
     "gulp-typescript": "^2.7.3",
-    "tsd": "^0.5.7"
+    "tsd": "0.5.7"
   }
 }
