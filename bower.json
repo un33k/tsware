@@ -9,11 +9,11 @@
   "license": "BDS",
   "ignore": [
     "**/.*",
-    "node_modules",
-    "bower_components",
-    "bower_packages",
     "test",
     "tests"
+    "node_modules",
+    "bower_packages",
+    "bower_components",
   ],
   "dependencies": {
   }
