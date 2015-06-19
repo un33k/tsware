@@ -10,7 +10,8 @@ var inject = require('gulp-inject');
 var tsc = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 var sourcemaps = require('gulp-sourcemaps');
-var gulp_cfg = new require('./gulp.cfg')();
+var GulpConfig = require('./gulp.cfg');
+var gulp_cfg = new GulpConfig();
 
 // Creates a single ref file (app.d.ts), using all app *.ts files
 gulp.task('refs-ts', function () {
@@ -49,7 +50,7 @@ gulp.task('compile-ts', function () {
     .pipe(sourcemaps.init())
     .pipe(tsconfig);
 
-  tsResult.dts.pipe(gulp.dest(gulp_cfg.tsOutputPath));
+  tsResult.dts.pipe(gulp.dest(gulp_cfg.javascript_dir));
   return tsResult
     .js
     .pipe(sourcemaps.write('.'))
@@ -60,8 +61,8 @@ gulp.task('compile-ts', function () {
 gulp.task('clean-js', function (cb) {
   var typeScriptGenFiles = [
     gulp_cfg.source_app_dir +'**/*.js',     // path to all generated *.js files
-    gulp_cfg.source_app_dir +'**/*.js.map'  // path to all generated *.js.map files
-    gulp_cfg.javascript_dir,                // path to specific generated *.js files
+    gulp_cfg.source_app_dir +'**/*.js.map', // path to all generated *.js.map files
+    gulp_cfg.javascript_dir                 // path to specific generated *.js files
   ];
 
   del(typeScriptGenFiles, cb);

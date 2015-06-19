@@ -1,6 +1,7 @@
 'use strict';
 
 var GulpConfig = (function () {
+
   function GulpConfig() {
 
     this.tools_dir = './tools/';
