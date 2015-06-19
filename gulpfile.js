@@ -1,6 +1,9 @@
 'use strict';
 
+// generics requires
 var del = require('del');
+
+// gulp related requires
 var gulp = require('gulp');
 var debug = require('gulp-debug');
 var inject = require('gulp-inject');
