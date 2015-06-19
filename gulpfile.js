@@ -1,32 +1,30 @@
 'use strict';
 
+var del = require('del');
 var gulp = require('gulp');
 var debug = require('gulp-debug');
 var inject = require('gulp-inject');
 var tsc = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 var sourcemaps = require('gulp-sourcemaps');
-var del = require('del');
-var Config = require('./gulpfile.config');
-
-var config = new Config();
+var gulp_cfg = new require('./gulp.cfg')();
 
 // Creates a single ref file (app.d.ts), using all app *.ts files
 gulp.task('refs-ts', function () {
-  var target = gulp.src(config.appTypeScriptReferences);
-  var sources = gulp.src([config.allTypeScript], {read: false});
+  var target = gulp.src(gulp_cfg.typescript_def_libs);
+  var sources = gulp.src([gulp_cfg.typescript_wildcards], {read: false});
   return target.pipe(inject(sources, {
     starttag: '//{',
     endtag: '//}',
     transform: function (filepath) {
       return '/// <reference path="../..' + filepath + '" />';
     }
-  })).pipe(gulp.dest(config.typings));
+  })).pipe(gulp.dest(gulp_cfg.types_dir));
 });
 
 // Lints all app *.ts files.
 gulp.task('lint-ts', function () {
-  return gulp.src(config.allTypeScript)
+  return gulp.src(gulp_cfg.typescript_wildcards)
     .pipe(tslint())
     .pipe(tslint.report('prose'));
 });
@@ -34,9 +32,9 @@ gulp.task('lint-ts', function () {
 // Compiles *.ts files while including refs to libs & app.d.ts
 gulp.task('compile-ts', function () {
   var sourceTsFiles = [
-    config.allTypeScript,                //path to *.ts files
-    config.libraryTypeScriptDefinitions, //reference to lib *.d.ts files
-    config.appTypeScriptReferences       //reference to app.d.ts files
+    gulp_cfg.typescript_def_libs, //path to *.ts files
+    gulp_cfg.typescript_def_libs, //reference to lib *.d.ts files
+    gulp_cfg.typescript_refs_app  //reference to app.d.ts files
   ];
   var tsconfig = tsc({
     target: 'ES5',
@@ -48,19 +46,19 @@ gulp.task('compile-ts', function () {
     .pipe(sourcemaps.init())
     .pipe(tsconfig);
 
-  tsResult.dts.pipe(gulp.dest(config.tsOutputPath));
+  tsResult.dts.pipe(gulp.dest(gulp_cfg.tsOutputPath));
   return tsResult
     .js
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(config.tsOutputPath));
+    .pipe(gulp.dest(gulp_cfg.javascript_dir));
 });
 
 // Removes compilation artifacts (*.js)
 gulp.task('clean-js', function (cb) {
   var typeScriptGenFiles = [
-    config.sourceApp +'**/*.js',    // path to all generated *.js files
-    config.sourceApp +'**/*.js.map' // path to all generated *.js.map files
-    config.tsOutputPath,            // path to specific generated *.js files
+    gulp_cfg.source_app_dir +'**/*.js',     // path to all generated *.js files
+    gulp_cfg.source_app_dir +'**/*.js.map'  // path to all generated *.js.map files
+    gulp_cfg.javascript_dir,                // path to specific generated *.js files
   ];
 
   del(typeScriptGenFiles, cb);
@@ -68,7 +66,7 @@ gulp.task('clean-js', function (cb) {
 
 // Watches for file changes
 gulp.task('watch', function() {
-    gulp.watch([config.allTypeScript], [
+    gulp.watch([gulp_cfg.typescript_def_libs], [
       'ts-lint',
       'compile-ts',
       'app-ref-ts'
