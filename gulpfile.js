@@ -1,86 +1,83 @@
 'use strict';
 
-// generics requires
-var del = require('del');
+var gulp       = require('gulp'),
+    debug      = require('gulp-debug'),
+    inject     = require('gulp-inject'),
+    tsc        = require('gulp-typescript'),
+    tslint     = require('gulp-tslint'),
+    sourcemaps = require('gulp-sourcemaps'),
+    clean      = require('gulp-clean'),
+    Config     = require('./gulp.cfg');
 
-// gulp related requires
-var gulp = require('gulp');
-var debug = require('gulp-debug');
-var inject = require('gulp-inject');
-var tsc = require('gulp-typescript');
-var tslint = require('gulp-tslint');
-var sourcemaps = require('gulp-sourcemaps');
-var GulpConfig = require('./gulp.cfg');
-var gulp_cfg = new GulpConfig();
+var config = new Config();
 
 // Creates a single ref file (app.d.ts), using all app *.ts files
-gulp.task('refs-ts', function () {
-  var target = gulp.src(gulp_cfg.typescript_def_libs);
-  var sources = gulp.src([gulp_cfg.typescript_wildcards], {read: false});
+gulp.task('generate-app-tsrefs', function () {
+  var target  = gulp.src(config.appTsDefListFile);
+  var sources = gulp.src([config.allAppTypeScripts], {read: false});
   return target.pipe(inject(sources, {
-    starttag: '//{',
-    endtag: '//}',
+    starttag : '//{',
+    endtag   : '//}',
     transform: function (filepath) {
       return '/// <reference path="../..' + filepath + '" />';
     }
-  })).pipe(gulp.dest(gulp_cfg.types_dir));
+  })).pipe(gulp.dest(config.typingsDir));
 });
 
 // Lints all app *.ts files.
 gulp.task('lint-ts', function () {
-  return gulp.src(gulp_cfg.typescript_wildcards)
-    .pipe(tslint())
-    .pipe(tslint.report('prose'));
+  return gulp.src(config.allTypeScripts)
+      .pipe(tslint())
+      .pipe(tslint.report('prose'));
 });
 
-// Compiles *.ts files while including refs to libs & app.d.ts
-gulp.task('compile-ts', function () {
-  var sourceTsFiles = [
-    gulp_cfg.typescript_def_libs, //path to *.ts files
-    gulp_cfg.typescript_def_libs, //reference to lib *.d.ts files
-    gulp_cfg.typescript_refs_app  //reference to app.d.ts files
-  ];
-  var tsconfig = tsc({
-    target: 'ES5',
-    declarationFiles: false,
-    noExternalResolve: true
-  });
-  var tsResult = gulp
-    .src(sourceTsFiles)
-    .pipe(sourcemaps.init())
-    .pipe(tsconfig);
 
-  tsResult.dts.pipe(gulp.dest(gulp_cfg.javascript_dir));
-  return tsResult
-    .js
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(gulp_cfg.javascript_dir));
+// Compiles *.ts files while including refs to libs & app.d.ts
+gulp.task('compile-app-ts', function () {
+  var sourceTsFiles = [
+    config.allAppTypeScripts,  
+    config.libTsDefFiles,
+    config.libTsDefListFile,
+    config.appTsDefListFile
+  ];
+
+  var tsResult = gulp.src(sourceTsFiles)
+      .pipe(sourcemaps.init())
+      .pipe(tsc({
+        target           : 'ES5',
+        module           : 'commonjs',
+        declarationFiles : false,
+        noExternalResolve: true
+      }));
+
+  tsResult.dts.pipe(gulp.dest(config.appDir));
+  return tsResult.js
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(config.appDir));
 });
 
 // Removes compilation artifacts (*.js)
-gulp.task('clean-js', function (cb) {
-  var typeScriptGenFiles = [
-    gulp_cfg.source_app_dir +'**/*.js',     // path to all generated *.js files
-    gulp_cfg.source_app_dir +'**/*.js.map', // path to all generated *.js.map files
-    gulp_cfg.javascript_dir                 // path to specific generated *.js files
+gulp.task('clean-ts', function () {
+  var GeneratedFiles = [
+    config.GeneratedJavaScriptFiles,
+    config.GeneratedJavaScriptFiles
   ];
-
-  del(typeScriptGenFiles, cb);
+  return gulp.src(GeneratedFiles, {read: false}).pipe(clean());
 });
 
 // Watches for file changes
 gulp.task('watch', function() {
-    gulp.watch([gulp_cfg.typescript_def_libs], [
-      'ts-lint',
-      'compile-ts',
-      'app-ref-ts'
+    gulp.watch([config.typescript_def_libs], [
+      // 'lint-ts',
+      'compile-app-ts',
+      'generate-app-tsrefs'
     ]);
 });
 
 // Sets default behavior for the gulp command
 gulp.task('default', [
-  'lint-ts',
-  'compile-ts',
-  'refs-ts',
-  'watch'
+  // 'lint-ts',
+  'compile-app-ts',
+  'generate-app-tsrefs',
+  // 'watch'
 ]);
