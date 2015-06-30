@@ -9,12 +9,13 @@ var GulpConfig = (function () {
 
     this.sourceDir  = './src/';
     this.appDir     = this.sourceDir + 'app/';
-
-    this.GeneratedJavaScriptFiles = this.sourceDir + '**/*.js';
-    this.GeneratedSourceMapFiles  = this.sourceDir + '**/*.js.map';
+    this.distDir     = this.sourceDir + 'dist/';
+      
+    this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
+    this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';
 
     this.allTypeScripts     = this.sourceDir + '**/*.ts';
-    this.allAppTypeScripts  = this.appApp + '**/*.ts';
+    this.allAppTypeScripts  = this.appDir + '**/*.ts';
 
     this.libTsDefFiles      = this.typingsDir + '*/*.d.ts';
     this.libTsDefListFile   = this.typingsDir + 'tsd.d.ts';

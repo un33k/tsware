@@ -15,11 +15,15 @@ var config = new Config();
 gulp.task('generate-app-tsrefs', function () {
   var target  = gulp.src(config.appTsDefListFile);
   var sources = gulp.src([config.allAppTypeScripts], {read: false});
+  console.log(config.appTsDefListFile);
+  console.log(config.allAppTypeScripts);
   return target.pipe(inject(sources, {
     starttag : '//{',
     endtag   : '//}',
     transform: function (filepath) {
-      return '/// <reference path="../..' + filepath + '" />';
+      var ret = '/// <reference path="../..' + filepath + '" />';
+      console.log(ret);
+      return ret;
     }
   })).pipe(gulp.dest(config.typingsDir));
 });
@@ -50,17 +54,18 @@ gulp.task('compile-app-ts', function () {
         noExternalResolve: true
       }));
 
-  tsResult.dts.pipe(gulp.dest(config.appDir));
+  tsResult.dts.pipe(gulp.dest(config.distDir));
   return tsResult.js
       .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(config.appDir));
+      .pipe(gulp.dest(config.distDir));
 });
 
 // Removes compilation artifacts (*.js)
 gulp.task('clean-ts', function () {
   var GeneratedFiles = [
-    config.GeneratedJavaScriptFiles,
-    config.GeneratedJavaScriptFiles
+    config.distDir,
+    config.generatedJavaScriptFiles,
+    config.generatedJavaScriptFiles
   ];
   return gulp.src(GeneratedFiles, {read: false}).pipe(clean());
 });
@@ -77,7 +82,7 @@ gulp.task('watch', function() {
 // Sets default behavior for the gulp command
 gulp.task('default', [
   // 'lint-ts',
-  'compile-app-ts',
+  // 'compile-app-ts',
   'generate-app-tsrefs',
   // 'watch'
 ]);
