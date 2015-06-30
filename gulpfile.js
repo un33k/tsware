@@ -15,15 +15,11 @@ var config = new Config();
 gulp.task('generate-app-tsrefs', function () {
   var target  = gulp.src(config.appTsDefListFile);
   var sources = gulp.src([config.allAppTypeScripts], {read: false});
-  console.log(config.appTsDefListFile);
-  console.log(config.allAppTypeScripts);
   return target.pipe(inject(sources, {
     starttag : '//{',
     endtag   : '//}',
     transform: function (filepath) {
-      var ret = '/// <reference path="../..' + filepath + '" />';
-      console.log(ret);
-      return ret;
+      return '/// <reference path="../..' + filepath + '" />';
     }
   })).pipe(gulp.dest(config.typingsDir));
 });
