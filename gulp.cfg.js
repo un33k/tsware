@@ -9,7 +9,8 @@ var GulpConfig = (function () {
 
     this.sourceDir  = './src/';
     this.appDir     = this.sourceDir + 'app/';
-    this.distDir     = this.sourceDir + 'dist/';
+
+    this.distDir     = './dist/';
       
     this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
     this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';

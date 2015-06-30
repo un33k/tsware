@@ -78,7 +78,7 @@ gulp.task('watch', function() {
 // Sets default behavior for the gulp command
 gulp.task('default', [
   // 'lint-ts',
-  // 'compile-app-ts',
-  'generate-app-tsrefs',
+  'compile-app-ts',
+  // 'generate-app-tsrefs',
   // 'watch'
 ]);
