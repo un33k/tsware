@@ -9,13 +9,13 @@ var GulpConfig = (function () {
     this.distDir    = './dist/';
     this.appDir     = this.sourceDir + 'app/';
           
-    this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
-    this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';
+    this.generatedJavaScriptFiles = this.sourceDir + '/**/*.js';
+    this.generatedSourceMapFiles  = this.sourceDir + '/**/*.js.map';
 
-    this.allTypeScripts     = this.sourceDir + '**/*.ts';
-    this.allAppTypeScripts  = this.appDir + '**/*.ts';
+    this.allTypeScripts     = this.sourceDir + '/**/*.ts';
+    this.allAppTypeScripts  = this.appDir + '/**/*.ts';
 
-    this.libTsDefFiles      = this.typingsDir + '*/*.d.ts';
+    this.libTsDefFiles      = this.typingsDir + '/**/*.d.ts';
     this.libTsDefListFile   = this.typingsDir + 'tsd.d.ts';
     this.appTsDefListFile   = this.typingsDir + 'app.d.ts';
   }
