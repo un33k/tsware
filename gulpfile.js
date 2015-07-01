@@ -11,26 +11,12 @@ var gulp       = require('gulp'),
 
 var config = new Config();
 
-// Creates a single ref file (app.d.ts), using all app *.ts files
-gulp.task('generate-app-tsrefs', function () {
-    var target = gulp.src(config.appTsDefListFile);
-    var sources = gulp.src([config.allAppTypeScripts], {read: false});
-    return target.pipe(inject(sources, {
-        starttag: '//{',
-        endtag: '//}',
-        transform: function (filepath) {
-            return '/// <reference path="../..' + filepath + '" />';
-        }
-    })).pipe(gulp.dest(config.typingsDir));
-});
-
 // Lints all app *.ts files.
 gulp.task('lint-ts', function () {
   return gulp.src(config.allTypeScripts)
       .pipe(tslint())
       .pipe(tslint.report('prose'));
 });
-
 
 // Compiles *.ts files while including refs to libs & app.d.ts
 gulp.task('compile-app-ts', function () {
@@ -57,6 +43,19 @@ gulp.task('compile-app-ts', function () {
       .pipe(gulp.dest(config.distDir));
 });
 
+// Creates a single ref file (app.d.ts), using all app *.ts files
+gulp.task('generate-app-tsrefs', function () {
+    var target = gulp.src(config.appTsDefListFile);
+    var sources = gulp.src([config.allAppTypeScripts], {read: false});
+    return target.pipe(inject(sources, {
+        starttag: '//{',
+        endtag: '//}',
+        transform: function (filepath) {
+            return '/// <reference path="../..' + filepath + '" />';
+        }
+    })).pipe(gulp.dest(config.typingsDir));
+});
+
 // Removes compilation artifacts (*.js)
 gulp.task('clean-ts', function () {
   var GeneratedFiles = [
@@ -78,6 +77,7 @@ gulp.task('watch', function() {
 
 // Sets default behavior for the gulp command
 gulp.task('default', [
+  'clean-ts',
   // 'lint-ts',
   'generate-app-tsrefs',
   'compile-app-ts'

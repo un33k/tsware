@@ -2,7 +2,7 @@
   "name": "tsware",
   "version": "0.0.1",
   "description": "A TypeScript Build Framework",
-  "main": "gulpfile.config.js",
+  "main": "gulpfile.cfg.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

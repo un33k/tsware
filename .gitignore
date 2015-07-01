@@ -23,6 +23,8 @@ tmp
 # Or type definitions we mirror from github
 **/typings/**/*.d.ts
 **/typings/tsd.cached.json
+!**/typings/**/app.d.ts
+!**/typings/**/tsd.d.ts
 
 # Include when developing application packages.
 pubspec.lock
