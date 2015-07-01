@@ -4,14 +4,11 @@ var GulpConfig = (function () {
  
   function GulpConfig() {
 
-    this.toolsDir   = './tools/';
-    this.typingsDir = this.toolsDir + 'typings/';
-
+    this.typingsDir = './typings/';
     this.sourceDir  = './src/';
+    this.distDir    = './dist/';
     this.appDir     = this.sourceDir + 'app/';
-
-    this.distDir     = './dist/';
-      
+          
     this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
     this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';
 

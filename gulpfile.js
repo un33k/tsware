@@ -44,6 +44,7 @@ gulp.task('compile-app-ts', function () {
   var tsResult = gulp.src(sourceTsFiles)
       .pipe(sourcemaps.init())
       .pipe(tsc({
+        typescript: require('typescript'),
         target           : 'ES5',
         module           : 'commonjs',
         declarationFiles : false,
