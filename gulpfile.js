@@ -68,20 +68,25 @@ gulp.task('clean-ts', function () {
   return gulp.src(GeneratedFiles, {read: false}).pipe(clean());
 });
 
-// Watches for file changes
+var taskList = [
+  // 'lint-ts',
+  'generate-app-tsrefs',
+  'compile-app-ts',
+];
+
+// Builds
+gulp.task('build',
+  taskList
+);
+
+// Watches for file changes and make subsequent runs
 gulp.task('watch', function() {
-    gulp.watch([config.typescript_def_libs], [
-      'lint-ts',
-      'compile-app-ts',
-      'generate-app-tsrefs'
-    ]);
+  gulp.watch([config.allAppTypeScripts], taskList);
 });
 
 // Sets default behavior for the gulp command
 gulp.task('default', [
   'clean-ts',
-  // 'lint-ts',
-  'generate-app-tsrefs',
-  'compile-app-ts'
-  // 'watch'
+  'build',
+  'watch'
 ]);
