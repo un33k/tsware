@@ -48,7 +48,7 @@ gulp.task('compile-app-ts', function () {
 gulp.task('generate-app-tsrefs', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([config.allAppTypeScripts], {read: false});
-    file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest('./'));
+    file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest(config.baseDir));
     return target.pipe(inject(sources, {
         starttag: '//{',
         endtag: '//}',

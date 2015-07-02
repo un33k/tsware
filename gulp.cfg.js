@@ -4,9 +4,10 @@ var GulpConfig = (function () {
  
   function GulpConfig() {
 
-    this.utilsDir   = './utils/';
-    this.sourceDir  = './src/';
-    this.distDir    = './dist/';
+    this.baseDir   = './';
+    this.utilsDir   = this.baseDir + '/utils/';
+    this.sourceDir  = this.baseDir + './src/';
+    this.distDir    = this.baseDir + './dist/';
     this.appDir     = this.sourceDir + 'app/';
     this.typingsDir = this.utilsDir + 'typings/';
 
