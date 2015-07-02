@@ -1,13 +1,14 @@
 'use strict';
 
-var gulp       = require('gulp'),
-    debug      = require('gulp-debug'),
-    inject     = require('gulp-inject'),
-    tsc        = require('gulp-typescript'),
-    tslint     = require('gulp-tslint'),
-    sourcemaps = require('gulp-sourcemaps'),
-    clean      = require('gulp-clean'),
-    Config     = require('./gulp.cfg');
+var gulp        = require('gulp'),
+    debug       = require('gulp-debug'),
+    file        = require('gulp-file'),
+    inject      = require('gulp-inject'),
+    tsc         = require('gulp-typescript'),
+    tslint      = require('gulp-tslint'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    clean       = require('gulp-clean'),
+    Config      = require('./gulp.cfg');
 
 var config = new Config();
 
@@ -47,6 +48,7 @@ gulp.task('compile-app-ts', function () {
 gulp.task('generate-app-tsrefs', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([config.allAppTypeScripts], {read: false});
+    file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest('./'));
     return target.pipe(inject(sources, {
         starttag: '//{',
         endtag: '//}',
