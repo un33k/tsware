@@ -15,8 +15,6 @@ bower_components
 # Or type definitions we mirror from github
 **/typings/**/*.d.ts
 **/typings/tsd.cached.json
-!**/typings/**/tsd.d.ts
-!**/typings/**/app.d.ts
 
 # Ignore npm debug log
 npm-debug.log
