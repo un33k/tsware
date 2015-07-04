@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-
-git update-index --assume-unchanged utils/typings/app.d.ts
-git update-index --assume-unchanged utils/typings/tsd.d.ts
+echo -e "Setting up your environment. Be patient!\n"
 
 npm install
 bower install
