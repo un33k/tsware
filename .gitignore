@@ -24,6 +24,7 @@ tmp
 **/typings/**/*.d.ts
 **/typings/tsd.cached.json
 !**/typings/**/tsd.d.ts
+!**/typings/**/app.d.ts
 
 # Include when developing application packages.
 pubspec.lock
