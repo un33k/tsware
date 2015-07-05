@@ -47,7 +47,11 @@ gulp.task('compile-app-ts', function () {
 // Creates a single ref file (app.d.ts), using all app *.ts files
 gulp.task('generate-app-tsrefs', function () {
     var target = gulp.src(config.appTsDefListFile);
-    var sources = gulp.src([config.allAppTypeScripts], {read: false});
+    var sources = gulp.src([
+        config.allAppTypeScripts,
+        config.sourceDir + 'index.ts',
+        config.sourceDir + 'injectables.ts'
+      ],{read: false});
     file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest(config.baseDir));
     return target.pipe(inject(sources, {
         starttag: '//{',
@@ -69,7 +73,7 @@ gulp.task('clean-ts', function () {
 });
 
 var taskList = [
-  // 'lint-ts',
+   'lint-ts',
   'generate-app-tsrefs',
   'compile-app-ts',
 ];
