@@ -8,6 +8,7 @@ var gulp        = require('gulp'),
     tslint      = require('gulp-tslint'),
     sourcemaps  = require('gulp-sourcemaps'),
     clean       = require('gulp-clean'),
+    runSequence = require('run-sequence'),
     Config      = require('./gulp.cfg');
 
 var config = new Config();
@@ -22,6 +23,7 @@ gulp.task('lint-ts', function () {
 // Compiles *.ts files while including refs to libs & app.d.ts
 gulp.task('compile-app-ts', function () {
   var sourceTsFiles = [
+    config.sourceDir + 'bootstrap.ts',
     config.allAppTypeScripts,  
     config.libTsDefFiles,
     config.libTsDefListFile,
@@ -48,9 +50,8 @@ gulp.task('compile-app-ts', function () {
 gulp.task('generate-app-tsrefs', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([
-        config.allAppTypeScripts,
-        config.sourceDir + 'index.ts',
-        config.sourceDir + 'injectables.ts'
+        config.sourceDir + 'bootstrap.ts',
+        config.allAppTypeScripts
       ],{read: false});
     file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest(config.baseDir));
     return target.pipe(inject(sources, {
@@ -73,7 +74,7 @@ gulp.task('clean-ts', function () {
 });
 
 var taskList = [
-   'lint-ts',
+  'lint-ts',
   'generate-app-tsrefs',
   'compile-app-ts',
 ];
@@ -89,8 +90,6 @@ gulp.task('watch', function() {
 });
 
 // Sets default behavior for the gulp command
-gulp.task('default', [
-  'clean-ts',
-  'build',
-  'watch'
-]);
+gulp.task('default', function(callback) {
+  runSequence('clean-ts', 'build', callback);
+});

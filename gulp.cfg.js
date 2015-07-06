@@ -11,6 +11,8 @@ var GulpConfig = (function () {
     this.appDir     = this.sourceDir + 'app/';
     this.typingsDir = this.utilsDir + 'typings/';
 
+    this.bootstripFile = this.sourceDir + 'bootstrap.ts';
+
     this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
     this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';
 
