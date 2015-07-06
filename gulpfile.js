@@ -3,6 +3,7 @@
 var gulp        = require('gulp'),
     debug       = require('gulp-debug'),
     file        = require('gulp-file'),
+    watch        = require('gulp-watch'),
     inject      = require('gulp-inject'),
     tsc         = require('gulp-typescript'),
     tslint      = require('gulp-tslint'),
@@ -73,10 +74,22 @@ gulp.task('clean-ts', function () {
   return gulp.src(GeneratedFiles, {read: false}).pipe(clean());
 });
 
+gulp.task('copy-html', function() {  
+  gulp.src(config.appDir + '/**/*.html', {base: config.appDir})
+    .pipe(gulp.dest(config.distDir));
+});
+
+gulp.task('copy-css', function() {  
+  gulp.src(config.appDir + '/**/*.css', {base: config.appDir})
+    .pipe(gulp.dest(config.distDir));
+});
+
 var taskList = [
   'lint-ts',
   'generate-app-tsrefs',
   'compile-app-ts',
+  'copy-html',
+  'copy-css'
 ];
 
 // Builds
