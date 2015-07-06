@@ -11,5 +11,9 @@
     "sourceMap": true,
     "listFiles": true,
     "outDir": "dist"
-  }
+  },
+  "filesGlob": [
+    "./utils/typings/tsd.d.ts",
+    "./utils/typings/app.d.ts"
+  ]
 }

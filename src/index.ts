@@ -1,14 +1,12 @@
-/// <reference path="../utils/typings/tsd.d.ts" />
-/// <reference path="../utils/typings/app.d.ts" />
 
 import { bootstrap, bind } from 'angular2/angular2';
-import { commonInjectables } from './app/injectables';
+import {RouteConfig, RouterOutlet, RouterLink, Router, routerInjectables} from 'angular2/angular2';
+import { commonInjectables } from './injectables';
 import { App } from './app/app';
 
-bootstrap(
-  App,
-  [
-    formInjectables,
-    routerInjectables
-  ]
+bootstrap(App, [
+    commonInjectables
+  ]).then(
+    success => console.log(success),
+    error => console.log(error)
 );
