@@ -4,14 +4,16 @@ var GulpConfig = (function () {
  
   function GulpConfig() {
 
-    this.baseDir   = './';
+    this.baseDir    = './';
     this.utilsDir   = this.baseDir + 'utils/';
     this.sourceDir  = this.baseDir + 'src/';
     this.distDir    = this.baseDir + 'dist/';
     this.appDir     = this.sourceDir + 'app/';
     this.typingsDir = this.utilsDir + 'typings/';
 
-    this.bootstripFile = this.sourceDir + 'bootstrap.ts';
+    this.bootstrapFile       = this.sourceDir + 'bootstrap.ts';
+    this.htmlFiles      = this.sourceDir + '**/*.html';
+    this.cssFiles       = this.sourceDir + '**/*.css';
 
     this.generatedJavaScriptFiles = this.sourceDir + '**/*.js';
     this.generatedSourceMapFiles  = this.sourceDir + '**/*.js.map';

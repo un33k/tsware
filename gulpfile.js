@@ -3,7 +3,7 @@
 var gulp        = require('gulp'),
     debug       = require('gulp-debug'),
     file        = require('gulp-file'),
-    watch        = require('gulp-watch'),
+    watch       = require('gulp-watch'),
     inject      = require('gulp-inject'),
     tsc         = require('gulp-typescript'),
     tslint      = require('gulp-tslint'),
@@ -14,17 +14,17 @@ var gulp        = require('gulp'),
 
 var config = new Config();
 
-// Lints all app *.ts files.
-gulp.task('lint-ts', function () {
+// Lint all app *.ts files.
+gulp.task('lint', function () {
   return gulp.src(config.allTypeScripts)
       .pipe(tslint())
       .pipe(tslint.report('prose'));
 });
 
-// Compiles *.ts files while including refs to libs & app.d.ts
-gulp.task('compile-app-ts', function () {
+// Compile *.ts files while including refs to libs & app.d.ts
+gulp.task('compile', function () {
   var sourceTsFiles = [
-    config.sourceDir + 'bootstrap.ts',
+    config.bootstrapFile,
     config.allAppTypeScripts,  
     config.libTsDefFiles,
     config.libTsDefListFile,
@@ -47,14 +47,14 @@ gulp.task('compile-app-ts', function () {
       .pipe(gulp.dest(config.distDir));
 });
 
-// Creates a single ref file (app.d.ts), using all app *.ts files
-gulp.task('generate-app-tsrefs', function () {
+// Create a single ref file (app.d.ts), using all app *.ts files
+gulp.task('refs', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([
-        config.sourceDir + 'bootstrap.ts',
+        config.bootstrapFile,
         config.allAppTypeScripts
       ],{read: false});
-    file(config.appTsDefListFile, '//{\n//}', { src: true }).pipe(gulp.dest(config.baseDir));
+    file(config.appTsDefListFile, '//{\n//}', {src: true}).pipe(gulp.dest(config.baseDir));
     return target.pipe(inject(sources, {
         starttag: '//{',
         endtag: '//}',
@@ -64,8 +64,8 @@ gulp.task('generate-app-tsrefs', function () {
     })).pipe(gulp.dest(config.typingsDir));
 });
 
-// Removes compilation artifacts (*.js)
-gulp.task('clean-ts', function () {
+// Remove compilation artifacts (*.js)
+gulp.task('clean', function () {
   var GeneratedFiles = [
     config.distDir,
     config.generatedJavaScriptFiles,
@@ -74,35 +74,45 @@ gulp.task('clean-ts', function () {
   return gulp.src(GeneratedFiles, {read: false}).pipe(clean());
 });
 
+// Copy html
 gulp.task('copy-html', function() {  
   gulp.src(config.appDir + '/**/*.html', {base: config.appDir})
     .pipe(gulp.dest(config.distDir));
 });
 
+// Copy css
 gulp.task('copy-css', function() {  
   gulp.src(config.appDir + '/**/*.css', {base: config.appDir})
     .pipe(gulp.dest(config.distDir));
 });
 
-var taskList = [
-  'lint-ts',
-  'generate-app-tsrefs',
-  'compile-app-ts',
-  'copy-html',
-  'copy-css'
-];
+// Copy assets
+gulp.task('copy',
+  ['copy-html', 'copy-css']
+);
 
-// Builds
-gulp.task('build',
-  taskList
+// Build
+gulp.task('build', function(callback) {
+  runSequence('clean', 'copy', 'lint', 'refs', 'compile', callback);
+});
+
+// Develop
+gulp.task('dev',
+  ['copy', 'refs', 'compile']
 );
 
 // Watches for file changes and make subsequent runs
 gulp.task('watch', function() {
-  gulp.watch([config.allAppTypeScripts], taskList);
+  gulp.watch([
+    config.allAppTypeScripts,
+    config.bootstrapFile,
+    config.htmlFiles,
+    config.cssFiles],
+    ['dev']
+  );
 });
 
 // Sets default behavior for the gulp command
 gulp.task('default', function(callback) {
-  runSequence('clean-ts', 'build', callback);
+  runSequence('clean', 'build', callback);
 });
