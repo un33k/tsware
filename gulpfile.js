@@ -35,10 +35,12 @@ gulp.task('compile', function () {
       .pipe(sourcemaps.init())
       .pipe(tsc({
         typescript: require('typescript'),
-        target           : 'ES5',
-        module           : 'commonjs',
-        declarationFiles : false,
-        noExternalResolve: true
+        declarationFiles: false,
+        noExternalResolve: true,
+        target: "es5",
+        module: "commonjs",
+        experimentalDecorators: true,
+        emitDecoratorMetadata: true
       }));
 
   tsResult.dts.pipe(gulp.dest(config.distDir));
