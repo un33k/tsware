@@ -10,7 +10,8 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "listFiles": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "experimentalDecorators": true
   },
   "filesGlob": [
     "./utils/typings/custom.d.ts",
