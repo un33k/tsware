@@ -11,6 +11,8 @@ var GulpConfig = (function () {
     this.appDir     = this.sourceDir + 'app/';
     this.typingsDir = this.utilsDir + 'typings/';
 
+    this.gulpDir        = this.utilsDir + 'gulp/';
+    this.gulpTaskDir    = this.gulpDir + 'tasks/';
     this.bootstrapFile  = this.sourceDir + 'bootstrap.ts';
     this.htmlFiles      = this.sourceDir + '**/*.html';
     this.cssFiles       = this.sourceDir + '**/*.css';

@@ -40,7 +40,7 @@ gulp.task('ts:compile', function () {
 });
 
 // Create a single reference ts file (app.d.ts), using all app *.ts files
-gulp.task('ts:build-refs', function () {
+gulp.task('ts:refs', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([
         config.bootstrapFile,

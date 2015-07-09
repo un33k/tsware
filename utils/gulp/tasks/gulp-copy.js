@@ -7,18 +7,18 @@ var gulp        = require('gulp'),
 var config = new Config();
 
 // Copy html
-gulp.task('copy-html', function() {  
+gulp.task('html:copy', function() {  
   gulp.src(config.appDir + '/**/*.html', {base: config.appDir})
     .pipe(gulp.dest(config.distDir));
 });
 
 // Copy css
-gulp.task('copy-css', function() {  
+gulp.task('css:copy', function() {  
   gulp.src(config.appDir + '/**/*.css', {base: config.appDir})
     .pipe(gulp.dest(config.distDir));
 });
 
 // Copy assets
 gulp.task('copy',
-  ['copy-html', 'copy-css']
+  ['html:copy', 'css:copy']
 );
