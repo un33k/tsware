@@ -2,6 +2,7 @@
 
 var gulp        = require('gulp'),
     debug       = require('gulp-debug'),
+    help        = require('gulp-help'),
     file        = require('gulp-file'),
     tslint      = require('gulp-tslint'),
     inject      = require('gulp-inject'),
@@ -9,10 +10,11 @@ var gulp        = require('gulp'),
     sourcemaps  = require('gulp-sourcemaps'),
     Config      = require('../gulp.cfg');
 
+help(gulp);
 var config = new Config();
 
 // Compile *.ts files while including refs to libs & app.d.ts
-gulp.task('ts:compile', function () {
+gulp.task('ts:compile', '-- Compile Typescript files', function () {
   var sourceTsFiles = [
     config.bootstrapFile,
     config.allAppTypeScripts,  
@@ -40,7 +42,7 @@ gulp.task('ts:compile', function () {
 });
 
 // Create a single reference ts file (app.d.ts), using all app *.ts files
-gulp.task('ts:refs', function () {
+gulp.task('ts:refs', '-- Generate App\'s Typescript reference files', function () {
     var target = gulp.src(config.appTsDefListFile);
     var sources = gulp.src([
         config.bootstrapFile,
@@ -57,7 +59,7 @@ gulp.task('ts:refs', function () {
 });
 
 // Lint all app related *.ts files.
-gulp.task('ts:lint', function () {
+gulp.task('ts:lint', '-- Lint Typescript files', function () {
   return gulp.src(config.allTypeScripts)
       .pipe(tslint())
       .pipe(tslint.report('prose'));
