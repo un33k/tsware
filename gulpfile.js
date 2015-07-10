@@ -35,6 +35,6 @@ gulp.task('watch', '-- Watch for file changes', function() {
 });
 
 // Sets default behavior for the gulp command
-gulp.task('default', '-- Default gulp entry point', ['clean'], function(callback) {
-  runSequence(['copy', 'ts:lint'], 'build', callback);
+gulp.task('default', '-- Default gulp entry point', ['clean', 'ts:refs', 'ts:lint'], function(callback) {
+  runSequence(['copy', 'ts:compile'], callback);
 });
