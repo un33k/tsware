@@ -6,35 +6,33 @@ var gulp        = require('gulp'),
     watch       = require('gulp-watch'),
     runSequence = require('run-sequence'),
     requireDir  = require('require-dir'),
-    Config      = require('./utils/gulp/gulp.cfg');
+    cfg      = require('./utils/gulp/config');
 
 help(gulp);
-var config = new Config();
+requireDir(cfg.dirs.gulp.tasks, {recurse: true});
 
-requireDir(config.gulpTaskDir, {recurse: true});
+// // Build
+// gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {
+//   runSequence('ts:refs', 'ts:compile', callback);
+// });
 
-// Build
-gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {
-  runSequence('ts:refs', 'ts:compile', callback);
-});
+// // Develop
+// gulp.task('dev', '-- Develop',
+//   ['copy', 'ts:refs', 'ts:compile']
+// );
 
-// Develop
-gulp.task('dev', '-- Develop',
-  ['copy', 'ts:refs', 'ts:compile']
-);
+// // Watches for file changes and make subsequent runs
+// gulp.task('watch', '-- Watch for file changes', function() {
+//   gulp.watch([
+//     config.allAppTypeScripts,
+//     config.bootstrapFile,
+//     config.htmlFiles,
+//     config.cssFiles],
+//     ['dev']
+//   );
+// });
 
-// Watches for file changes and make subsequent runs
-gulp.task('watch', '-- Watch for file changes', function() {
-  gulp.watch([
-    config.allAppTypeScripts,
-    config.bootstrapFile,
-    config.htmlFiles,
-    config.cssFiles],
-    ['dev']
-  );
-});
-
-// Sets default behavior for the gulp command
-gulp.task('default', '-- Default gulp entry point', ['clean', 'ts:refs', 'ts:lint'], function(callback) {
-  runSequence(['copy', 'ts:compile'], callback);
-});
+// // Sets default behavior for the gulp command
+// gulp.task('default', '-- Default gulp entry point', ['clean', 'ts:refs', 'ts:lint'], function(callback) {
+//   runSequence(['copy', 'ts:compile'], callback);
+// });
