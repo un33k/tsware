@@ -11,10 +11,8 @@ help(gulp);
 // Transpile typescript files
 gulp.task('ts:transpile', '-- Transpile Typescript & Refs files', function () {
   var source = [
-    cfg.files.refs.lib,
-    cfg.files.refs.app,
-    cfg.files.refs.custom,
-    cfg.files.ts.wildcard.app
+    cfg.files.ts.wildcard.app,
+    cfg.files.ts.wildcard.lib
   ];
 
   return gulp.src(source)

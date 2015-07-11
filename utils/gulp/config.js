@@ -25,7 +25,8 @@ var config = {
       },
       ts: {
         wildcard: {
-          app: src + '**/*.ts'
+          app: src + '**/*.ts',
+          lib: typings + '**/*.ts'
         }
       }
     },
