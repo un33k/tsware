@@ -5,12 +5,14 @@ var dest     = './dist/';
 var src      = './src/';
 var typings  = './utils/typings/';
 var gulp     = './utils/gulp/';
+var tmp      = './tmp/';
+
 
 var config = {
   ////////////
   gulp: {
     dirs: {
-      tasks: gulp + '/tasks'
+      tasks: gulp + 'tasks'
     }
   },
   ////////////
@@ -29,11 +31,18 @@ var config = {
     },
     dirs: {
       base: base,
-      typings: typings
+      typings: typings,
+      tmp: {
+        src: {
+          base: tmp + 'src/',
+          js: tmp + 'src/js/'
+        },
+        test: tmp + 'test/'
+      }
     },
     options: {
       ts: {
-        compile: {
+        transpile: {
           target: "ES5",
           module: "commonjs",
           declarationFiles: false,
