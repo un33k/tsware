@@ -6,6 +6,7 @@ var src      = './src/';
 var typings  = './utils/typings/';
 var gulp     = './utils/gulp/';
 var tmp      = './tmp/';
+var test     = './test/';
 
 
 var config = {
@@ -26,7 +27,8 @@ var config = {
       ts: {
         wildcard: {
           app: src + '**/*.ts',
-          lib: typings + '**/*.ts'
+          lib: typings + '**/*.ts',
+          test: test + '**/*.ts'
         }
       }
     },
@@ -38,7 +40,10 @@ var config = {
           base: tmp + 'src/',
           js: tmp + 'src/js/'
         },
-        test: tmp + 'test/'
+        test: {
+          base: tmp + 'test/',
+          js: tmp + 'test/js/'
+        }
       }
     },
     options: {
