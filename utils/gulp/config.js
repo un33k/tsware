@@ -18,7 +18,7 @@ var config = {
     files: {
       refs: {
         lib: typings + 'tsd.d.ts',
-        app: typings + '/custom/app.d.ts',
+        app: typings + 'app.d.ts',
         custom: typings + 'custom.d.ts'
       },
       ts: {

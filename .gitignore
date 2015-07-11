@@ -16,7 +16,9 @@ bower_components
 **/typings/**/*.d.ts
 **/typings/tsd.cached.json
 !**/typings/custom/**/*.d.ts
+!**/typings/tsd.d.ts
 !**/typings/custom.d.ts
+!**/typings/app.d.ts
 
 # Ignore npm debug log
 npm-debug.log
