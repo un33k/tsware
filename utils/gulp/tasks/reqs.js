@@ -5,7 +5,7 @@ var help = require('gulp-help');
 
 help(gulp);
 
-// Install packages & reference files
+// <Re>Install packages & reference files within gulp's context
 gulp.task('proj:install', '-- Install the requirements (npm, bower, tsd, ..etc.)', function(cb) {
   run('npm install').exec("", function(){
     run('tsd reinstall -so').exec("", function(){
