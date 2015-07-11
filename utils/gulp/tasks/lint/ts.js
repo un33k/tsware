@@ -9,7 +9,7 @@ var cfg = require('../../config').typescript;
 help(gulp);
 
 // Lint all app related *.ts files.
-gulp.task('ts:lint', '-- Lint App\'s Typescript files', function () {
+gulp.task('tsl:app', '-- Lint App\'s Typescript files', function () {
   return gulp
       .src(cfg.files.ts.wildcard.app)
       .pipe(lint())
@@ -17,7 +17,7 @@ gulp.task('ts:lint', '-- Lint App\'s Typescript files', function () {
 });
 
 // Lint all test related *.ts files.
-gulp.task('ts:lint-test', '-- Lint Test\'s Typescript files', function () {
+gulp.task('tsl-test', '-- Lint Test\'s Typescript files', function () {
   return gulp
       .src(cfg.files.ts.wildcard.test)
       .pipe(lint())

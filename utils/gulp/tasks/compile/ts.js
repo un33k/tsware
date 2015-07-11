@@ -9,7 +9,7 @@ var cfg = require('../../config').typescript;
 help(gulp);
 
 // Transpile typescript app files
-gulp.task('ts:tsc', '-- Transpile App\'s typescript & fefs files', function () {
+gulp.task('tsc:app', '-- Transpile App\'s typescript & fefs files', function () {
   var source = [
     cfg.files.ts.wildcard.app,
     cfg.files.ts.wildcard.lib
@@ -21,7 +21,7 @@ gulp.task('ts:tsc', '-- Transpile App\'s typescript & fefs files', function () {
 });
 
 // Transpile typescript files
-gulp.task('ts:tsc-test', '-- Transpile test\'s typescript & fefs files', function () {
+gulp.task('tsc:test', '-- Transpile test\'s typescript & fefs files', function () {
   var source = [
     cfg.files.ts.wildcard.test
   ];
