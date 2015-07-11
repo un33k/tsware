@@ -1,14 +1,10 @@
 'use strict';
 
-var gulp        = require('gulp'),
-    debug       = require('gulp-debug'),
-    help        = require('gulp-help'),
-    file        = require('gulp-file'),
-    tslint      = require('gulp-tslint'),
-    inject      = require('gulp-inject'),
-    tsc         = require('gulp-typescript'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    cfg      		= require('../config').typescript;
+var gulp = require('gulp');
+var debug = require('gulp-debug');
+var help = require('gulp-help');
+var inject = require('gulp-inject');
+var cfg = require('../config').typescript;
 
 help(gulp);
 

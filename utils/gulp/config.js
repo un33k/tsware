@@ -8,8 +8,8 @@ var gulp     = './utils/gulp/';
 
 var config = {
   ////////////
-  dirs: {
-    gulp: {
+  gulp: {
+    dirs: {
       tasks: gulp + '/tasks'
     }
   },

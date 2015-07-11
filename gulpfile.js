@@ -1,15 +1,13 @@
 'use strict';
 
-var gulp        = require('gulp'),
-    debug       = require('gulp-debug'),
-    help        = require('gulp-help'),
-    watch       = require('gulp-watch'),
-    runSequence = require('run-sequence'),
-    requireDir  = require('require-dir'),
-    cfg      = require('./utils/gulp/config');
+var gulp        = require('gulp');
+var debug       = require('gulp-debug');
+var help        = require('gulp-help');
+var reqdir      = require('require-dir');
+var cfg         = require('./utils/gulp/config');
 
 help(gulp);
-requireDir(cfg.dirs.gulp.tasks, {recurse: true});
+reqdir(cfg.gulp.dirs.tasks, {recurse: true});
 
 // // Build
 // gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {
