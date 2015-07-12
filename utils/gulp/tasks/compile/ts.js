@@ -11,8 +11,8 @@ help(gulp);
 // Transpile typescript app files
 gulp.task('tsc:app', '-- Transpile App\'s typescript & fefs files', function () {
   var source = [
-    cfg.files.ts.wildcard.app,
-    cfg.files.ts.wildcard.lib
+    cfg.files.ts.globs.app,
+    cfg.files.ts.globs.lib
   ];
 
   return gulp.src(source)
@@ -23,7 +23,7 @@ gulp.task('tsc:app', '-- Transpile App\'s typescript & fefs files', function () 
 // Transpile typescript files
 gulp.task('tsc:test', '-- Transpile test\'s typescript & fefs files', function () {
   var source = [
-    cfg.files.ts.wildcard.test
+    cfg.files.ts.globs.test
   ];
 
   return gulp.src(source)

@@ -12,7 +12,7 @@ help(gulp);
 gulp.task('refs:app', '-- Generate App\'s Typescript references file', function () {
 
     var target = gulp.src(cfg.files.refs.app);
-    var sources = gulp.src([cfg.files.ts.wildcard.app], {read: false});
+    var sources = gulp.src([cfg.files.ts.globs.app], {read: false});
 
     return target
       .pipe(inject(sources, cfg.options.ts.refs.inject))
