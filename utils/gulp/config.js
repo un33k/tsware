@@ -53,6 +53,9 @@ var config = {
           module: "commonjs",
           declarationFiles: false,
           noExternalResolve: true,
+          inlineSources: false,
+          sortOutput: true,
+          preserveConstEnums: true,
           experimentalDecorators: true,
           emitDecoratorMetadata: true,
           typescript: require('typescript')
