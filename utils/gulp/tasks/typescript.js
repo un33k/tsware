@@ -11,7 +11,7 @@ var cfg = require('../config').typescript;
 
 help(gulp);
 
-var tsProject = tst.createProject(gulp.src('../../../tsconfig.json'), {
+var tsProject = tst.createProject('tsconfig.json', {
   typescript: require('typescript')
 });
 
@@ -22,8 +22,8 @@ gulp.task('tst:app', 'Transpile App\'s typescript & fefs files', function () {
   ];
   return gulp.src(source)
     .pipe(plumber())
-    .pipe(tst(cfg.options.ts.transpile))
-    .js.pipe(gulp.dest(cfg.dirs.tmp.src.js));
+    .pipe(tst(tsProject))
+    .js.pipe(gulp.dest(cfg.dirs.dev.src.js));
 });
 
 gulp.task('tst:test', 'Transpile test\'s typescript & fefs files', function () {
@@ -33,7 +33,7 @@ gulp.task('tst:test', 'Transpile test\'s typescript & fefs files', function () {
   return gulp.src(source)
     .pipe(plumber())
     .pipe(tst(tsProject))
-    .js.pipe(gulp.dest(cfg.dirs.tmp.test.js));
+    .js.pipe(gulp.dest(cfg.dirs.dev.test.js));
 });
 
 gulp.task('tsl:app', 'Lint App\'s Typescript files', function () {
