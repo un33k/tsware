@@ -25,7 +25,7 @@ var config = {
         custom: typings + 'custom.d.ts'
       },
       ts: {
-        wildcard: {
+        globs: {
           app: src + '**/*.ts',
           lib: typings + '**/*.ts',
           test: test + '**/*.ts'
