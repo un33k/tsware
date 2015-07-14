@@ -1,11 +1,11 @@
 'use strict';
 
 var base = './';
-var dest = './dist/';
+var dev = './dev/';
+var prod = './prod/';
 var src = './src/';
 var typings = './utils/typings/';
 var gulp = './utils/gulp/';
-var tmp = './tmp/';
 var test = './test/';
 
 
@@ -22,7 +22,7 @@ var config = {
       refs: {
         lib: typings + 'tsd.d.ts',
         app: typings + 'app.d.ts',
-        custom: typings + 'custom.d.ts'
+        refs: typings + 'references.d.ts'
       },
       ts: {
         globs: {
@@ -35,14 +35,14 @@ var config = {
     dirs: {
       base: base,
       typings: typings,
-      tmp: {
+      dev: {
         src: {
-          base: tmp + 'src/',
-          js: tmp + 'src/js/'
+          base: dev + 'src/',
+          js: dev + 'src/js/'
         },
         test: {
-          base: tmp + 'test/',
-          js: tmp + 'test/js/'
+          base: dev + 'test/',
+          js: dev + 'test/js/'
         }
       }
     }
