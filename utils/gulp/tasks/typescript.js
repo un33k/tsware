@@ -20,7 +20,6 @@ gulp.task('tst:app', 'Transpile App\'s typescript & fefs files', function () {
     cfg.files.ts.globs.app,
     cfg.files.ts.globs.lib
   ];
-
   return gulp.src(source)
     .pipe(plumber())
     .pipe(tst(cfg.options.ts.transpile))
@@ -31,7 +30,6 @@ gulp.task('tst:test', 'Transpile test\'s typescript & fefs files', function () {
   var source = [
     cfg.files.ts.globs.test
   ];
-
   return gulp.src(source)
     .pipe(plumber())
     .pipe(tst(tsProject))
@@ -55,10 +53,8 @@ gulp.task('tsl:test', 'Lint Test\'s Typescript files', function () {
 });
 
 gulp.task('tsg:refs', 'Generate App\'s Typescript references file', function () {
-
   var target = gulp.src(cfg.files.refs.app);
-  var sources = gulp.src([cfg.files.ts.globs.app], { read: false }).pipe(plumber());
-
+  var sources = gulp.src([cfg.files.ts.globs.app], { read: false });
   var options = {
     starttag: '//{',
     endtag: '//}',
@@ -69,5 +65,4 @@ gulp.task('tsg:refs', 'Generate App\'s Typescript references file', function () 
   return target.pipe(plumber())
     .pipe(inject(sources, options))
     .pipe(gulp.dest(cfg.dirs.typings));
-
 });
