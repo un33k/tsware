@@ -11,7 +11,11 @@
     "sourceMap": true,
     "listFiles": true,
     "outDir": "dist",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "declarationFiles": false,
+    "noExternalResolve": true,
+    "sortOutput": true,
+    "preserveConstEnums": true      
   },
   "filesGlob": [
     "./utils/typings/references.d.ts"

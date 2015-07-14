@@ -46,6 +46,7 @@ var config = {
         }
       }
     },
+    tsconfig: '../../../tsconfig.json',
     options: {
       ts: {
         transpile: {
