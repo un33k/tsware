@@ -45,33 +45,6 @@ var config = {
           js: tmp + 'test/js/'
         }
       }
-    },
-    tsconfig: '../../../tsconfig.json',
-    options: {
-      ts: {
-        transpile: {
-          target: "ES5",
-          module: "commonjs",
-          declarationFiles: false,
-          noExternalResolve: true,
-          inlineSources: false,
-          sortOutput: true,
-          preserveConstEnums: true,
-          experimentalDecorators: true,
-          emitDecoratorMetadata: true,
-          typescript: require('typescript')
-        },
-        refs: {
-          inject: {
-            starttag: '//{',
-            endtag: '//}',
-            transform: function (path) {
-              return '/// <reference path="../..' + path + '" />';
-            }
-          },
-          tags: '//{\n//}\n'
-        }
-      }
     }
   }
 }
