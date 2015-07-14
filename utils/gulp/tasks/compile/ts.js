@@ -17,9 +17,9 @@ gulp.task('tsc:app', 'Transpile App\'s typescript & fefs files', function () {
   ];
 
   return gulp.src(source)
-             .pipe(plumber())
-             .pipe(tsc(cfg.options.ts.transpile))
-             .js.pipe(gulp.dest(cfg.dirs.tmp.src.js));
+    .pipe(plumber())
+    .pipe(tsc(cfg.options.ts.transpile))
+    .js.pipe(gulp.dest(cfg.dirs.tmp.src.js));
 });
 
 // Transpile typescript files
@@ -29,7 +29,7 @@ gulp.task('tsc:test', 'Transpile test\'s typescript & fefs files', function () {
   ];
 
   return gulp.src(source)
-             .pipe(plumber())
-             .pipe(tsc(cfg.options.ts.transpile))
-             .js.pipe(gulp.dest(cfg.dirs.tmp.test.js));
+    .pipe(plumber())
+    .pipe(tsc(cfg.options.ts.transpile))
+    .js.pipe(gulp.dest(cfg.dirs.tmp.test.js));
 });

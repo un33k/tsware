@@ -1,12 +1,12 @@
 'use strict';
 
-var base     = './';
-var dest     = './dist/';
-var src      = './src/';
-var typings  = './utils/typings/';
-var gulp     = './utils/gulp/';
-var tmp      = './tmp/';
-var test     = './test/';
+var base = './';
+var dest = './dist/';
+var src = './src/';
+var typings = './utils/typings/';
+var gulp = './utils/gulp/';
+var tmp = './tmp/';
+var test = './test/';
 
 
 var config = {

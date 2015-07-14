@@ -2,7 +2,7 @@
 
 var plum = require('gulp-plumber');
 
-var plumber = function() {
+var plumber = function () {
 	// same are gulp.plumber, but will handle errors gracefully
 	return plum({
 		errorHandler: function (err) {
