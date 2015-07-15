@@ -7,7 +7,7 @@ var reqdir      = require('require-dir');
 var cfg         = require('./utils/gulp/config');
 
 help(gulp);
-reqdir(cfg.gulp.dirs.tasks, {recurse: true});
+reqdir(cfg.basic.gulp.tasks.baseDir, {recurse: true});
 
 // // Build
 // gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {

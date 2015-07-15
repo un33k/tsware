@@ -18,6 +18,8 @@
     "preserveConstEnums": true      
   },
   "filesGlob": [
-    "./utils/typings/references.d.ts"
+    "utils/typings/tsd",
+    "utils/typings/custom.d.ts",
+    "utils/typings/app.d.ts"
   ]
 }
