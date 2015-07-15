@@ -18,10 +18,10 @@ var tsProject = tsc.createProject('tsconfig.json', {
 gulp.task('tsc:app', 'Transpile App\'s typescript & fefs files', function () {
   var source = [
     cfg.ts.globs.app,
-    // cfg.ts.globs.lib,
+    cfg.ts.globs.lib,
   ];
   return gulp.src(source)
-    // .pipe(plumber())
+    .pipe(plumber())
     .pipe(tsc(tsProject))
     .js.pipe(gulp.dest(cfg.dist.dev.baseDir));
 });
@@ -29,7 +29,7 @@ gulp.task('tsc:app', 'Transpile App\'s typescript & fefs files', function () {
 gulp.task('tsl:app', 'Lint App\'s Typescript files', function () {
   return gulp
     .src(cfg.ts.globs.app)
-    // .pipe(plumber())
+    .pipe(plumber())
     .pipe(lint())
     .pipe(lint.report('verbose'));
 });
