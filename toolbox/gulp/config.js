@@ -1,5 +1,13 @@
 'use strict';
 
+var EXT = {
+  js: '.js',
+  ts: '.ts',
+  css: '.css',
+  html: '.html',
+  sass: '.scss'
+};
+
 var DIR = {
   rootDir: './',
   distDir: './dist/',
