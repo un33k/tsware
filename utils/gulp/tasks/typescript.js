@@ -15,7 +15,7 @@ var tsProject = tsc.createProject('tsconfig.json', {
   typescript: require('typescript')
 });
 
-gulp.task('tsc:app', 'Transpile App\'s typescript & fefs files', function () {
+gulp.task('tsc:app', "Transpiles app's typescript files", function () {
   var source = [
     cfg.ts.globs.app,
     cfg.ts.globs.lib,
@@ -26,7 +26,7 @@ gulp.task('tsc:app', 'Transpile App\'s typescript & fefs files', function () {
     .js.pipe(gulp.dest(cfg.dist.dev.baseDir));
 });
 
-gulp.task('tsl:app', 'Lint App\'s Typescript files', function () {
+gulp.task('tsl:app', "Lints app's typescript files", function () {
   return gulp
     .src(cfg.ts.globs.app)
     .pipe(plumber())
@@ -34,7 +34,7 @@ gulp.task('tsl:app', 'Lint App\'s Typescript files', function () {
     .pipe(lint.report('verbose'));
 });
 
-gulp.task('tsg:refs', 'Generate App\'s Typescript references file', function () {
+gulp.task('tsg:refs', "Generates app's typescript references file", function () {
   var target = gulp.src(cfg.ts.refs.appFile);
   var sources = gulp.src([cfg.ts.globs.app], { read: false });
   var options = {
