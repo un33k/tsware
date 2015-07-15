@@ -14,9 +14,9 @@ gulp.task('opt:img', "Optimize images for the web.", function () {
 		.pipe(plumber())
 		.pipe(imagemin({
 			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
+			svgoPlugins: [{ removeViewBox: false }],
       use: [pngquant()]
 		}))
 		.pipe(gulp.dest(cfg.dist.dev.imgDir))
-		.pipe(size({title: 'Optimzed image files'}));
+		.pipe(size({ title: 'Optimzed image files' }));
 });
