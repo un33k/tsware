@@ -6,8 +6,9 @@ var help        = require('gulp-help');
 var reqdir      = require('require-dir');
 var cfg         = require('./toolbox/gulp/config');
 
-help(gulp);
+help(gulp, {aliases: ['h', '?']});
 reqdir(cfg.dir.gulpDir, {recurse: true});
+
 
 // // Build
 // gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {

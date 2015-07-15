@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var debug = require('gulp-debug');
-var help = require('gulp-help');
 var lint = require('gulp-tslint');
 var size = require('gulp-size');
 var inject = require('gulp-inject');
@@ -10,7 +9,6 @@ var tsc = require('gulp-typescript');
 var plumber = require('../utils').plumber;
 var cfg = require('../config');
 
-help(gulp);
 
 var tsProject = tsc.createProject('tsconfig.json', {
   typescript: require('typescript')
