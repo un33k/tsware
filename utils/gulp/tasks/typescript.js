@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var debug = require('gulp-debug');
 var help = require('gulp-help');
 var lint = require('gulp-tslint');
+var size = require('gulp-size');
 var inject = require('gulp-inject');
 var tsc = require('gulp-typescript');
 var plumber = require('../utils').plumber;
@@ -23,7 +24,8 @@ gulp.task('tsc:app', "Transpiles app's typescript files.", function () {
   return gulp.src(source)
     .pipe(plumber())
     .pipe(tsc(tsProject))
-    .js.pipe(gulp.dest(cfg.dist.dev.baseDir));
+    .js.pipe(gulp.dest(cfg.dist.dev.baseDir))
+    .pipe(size({title: "Generated javascript files"}));
 });
 
 gulp.task('tsl:app', "Lints app's typescript files.", function () {
