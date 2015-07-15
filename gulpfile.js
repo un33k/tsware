@@ -4,10 +4,10 @@ var gulp        = require('gulp');
 var debug       = require('gulp-debug');
 var help        = require('gulp-help');
 var reqdir      = require('require-dir');
-var cfg         = require('./utils/gulp/config');
+var cfg         = require('./toolbox/gulp/config');
 
 help(gulp);
-reqdir(cfg.basic.gulp.tasks.baseDir, {recurse: true});
+reqdir(cfg.dir.gulpDir, {recurse: true});
 
 // // Build
 // gulp.task('build', '-- Build refs file and compile Typescript files', function(callback) {
