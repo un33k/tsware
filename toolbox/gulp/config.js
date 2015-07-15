@@ -12,7 +12,7 @@ var DIR = {
 
 var GULP = {
   baseDir: DIR.gulp,
-  tasksDir: DIR.gulp + 'tasks',
+  tasksDir: DIR.gulp + 'tasks/',
   cfgFile: DIR.gulpDir + 'config.js'
 };
 
