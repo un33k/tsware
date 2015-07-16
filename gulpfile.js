@@ -2,9 +2,9 @@
 
 var gulp = require('gulp');
 var debug = require('gulp-debug');
-var help = require('gulp-help');
 var loadtask = require('require-dir');
 var cfg = require('./toolbox/gulp/config');
 
-help(gulp, { aliases: ['h', '?'] });
+var gulp = require('gulp-help')(gulp, { description: '-- gulp [TASK] [OPTIONS...]' });
+
 loadtask(cfg.dir.gulpDir, { recurse: true });
