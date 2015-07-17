@@ -30,13 +30,15 @@ var DIST = {
     baseDir: DIR.distDir + 'dev/',
     libDir: DIR.distDir + 'dev/lib/',
     imgDir: DIR.distDir + 'dev/img/',
-    styleDir: DIR.distDir + 'dev/style/'
+    styleDir: DIR.distDir + 'dev/style/',
+    htmlDir: DIR.distDir + 'dev/'
   },
   prod: {
     baseDir: DIR.distDir + 'prod',
     libDir: DIR.distDir + 'prod/lib/',
     imgDir: DIR.distDir + 'prod/img/',
-    styleDir: DIR.distDir + 'dev/style/'
+    styleDir: DIR.distDir + 'prod/style/',
+    htmlDir: DIR.distDir + 'prod/'
   }
 };
 
@@ -45,14 +47,14 @@ var TYPESCRIPT = {
     baseDir: DIR.typingsDir,
   },
   refs: {
-    libFile: 'toolbox/typings/tsd.d.ts',
-    appFile: 'toolbox/typings/app.d.ts',
-    customFile: 'toolbox/typings/custom.d.ts'
+    libFile: DIR.typingsDir + 'tsd.d.ts',
+    appFile: DIR.typingsDir + 'app.d.ts',
+    customFile: DIR.typingsDir + 'custom.d.ts'
   },
   globs: {
-    app: 'src/app/**/*.ts',
-    test: 'src/test/**/*.ts',
-    lib: 'toolbox/typings/**/*.ts'
+    app: DIR.appDir + '**/*.ts',
+    test: DIR.testDir + '**/*.ts',
+    lib: DIR.typingsDir + '**/*.ts'
   },
 };
 
@@ -63,10 +65,27 @@ var IMAGE = {
   ],
 };
 
+var HTML = {
+  baseDir: DIR.appDir,
+  src: {
+    app: DIR.appDir + "**/*.html"
+  }
+};
+
+var STYLE = {
+  baseDir: DIR.appDir,
+  src: {
+    app: DIR.appDir + "/style/**/*.css"
+  }
+};
+
+
 module.exports = {
   dir: DIR,
   gulp: GULP,
   dist: DIST,
   ts: TYPESCRIPT,
-  img: IMAGE
+  img: IMAGE,
+  html: HTML,
+  style: STYLE
 };
