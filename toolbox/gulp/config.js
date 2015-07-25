@@ -58,6 +58,16 @@ var TYPESCRIPT = {
   },
 };
 
+var JAVASCRIPT = {
+  app: {
+    bundle: {
+      entrypoint: DIST.dev,
+      filename: 'bundle.js',
+      outputDir: DIST.prod.baseDir
+    },
+  }
+};
+
 var IMAGE = {
   baseDir: DIR.appDir + 'img/',
   src: [
@@ -85,6 +95,7 @@ module.exports = {
   gulp: GULP,
   dist: DIST,
   ts: TYPESCRIPT,
+  js: JAVASCRIPT,
   img: IMAGE,
   html: HTML,
   style: STYLE

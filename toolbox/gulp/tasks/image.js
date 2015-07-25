@@ -9,7 +9,7 @@ var size = require('gulp-size');
 var cfg = require('../config');
 
 
-gulp.task('opt:img', "-- Optimize images for the web.", function () {
+gulp.task('image:optimize', "-- Optimize images for the web.", function () {
 	return gulp.src(cfg.img.src)
 		.pipe(plumber())
 		.pipe(imagemin({

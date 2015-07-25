@@ -9,14 +9,9 @@ var size = require('gulp-size');
 var cfg = require('../config');
 
 
-gulp.task('browserify:app', function() {
-  return browserify('dev/bootstrap.js')
-  .pipe(browserify({
-    insertGlobals: true,
-    debug: false
-  }))
-  // Bundle to a single file
-  .pipe(concat('bundle.js'))
-  // Output it to our dist folder
-  .pipe(gulp.dest('dist/js'));
+gulp.task('bundle:app', "-- Bundle all dependancies into a single file.", function () {
+  return browserify(cfg.js.app.bundle.entrypoint, { debug: true })
+    .bundle()
+    .pipe(source(cfg.js.app.bundle.filename))
+    .pipe(gulp.dest(cfg.js.app.bundle.outputDir));
 });
