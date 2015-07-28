@@ -19,7 +19,11 @@
     "url": "https://github.com/un33k/tsware/issues"
   },
   "homepage": "https://github.com/un33k/tsware",
-  "dependencies": {},
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.32",
+    "es6-shim": "^0.32.2",
+    "reflect-metadata": "^0.1.0"
+  },
   "devDependencies": {
     "browser-sync": "^2.7.13",
     "browserify": "^11.0.0",

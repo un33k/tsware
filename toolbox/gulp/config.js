@@ -15,7 +15,8 @@ var DIR = {
   appDir: './src/app/',
   testDir: './src/test/',
   gulpDir: './toolbox/gulp/',
-  typingsDir: './toolbox/typings/'
+  typingsDir: './toolbox/typings/',
+  nodeDir: './node_modules'
 };
 
 var GULP = {
@@ -61,7 +62,11 @@ var TYPESCRIPT = {
 var JAVASCRIPT = {
   app: {
     bundle: {
-      entrypoint: DIST.dev,
+      globs: {
+        lib: DIR.nodeDir + 'angular2/**/*.js',
+        core: DIST.dev.baseDir + '**/*.js'
+      },
+      entry: DIST.dev.baseDir +'bootstrap.js',
       filename: 'bundle.js',
       outputDir: DIST.prod.baseDir
     },
@@ -91,6 +96,7 @@ var STYLE = {
 
 
 module.exports = {
+  ext: EXT,
   dir: DIR,
   gulp: GULP,
   dist: DIST,

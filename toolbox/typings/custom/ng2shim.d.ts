@@ -1,5 +1,31 @@
 declare var zone: any;
-declare var Zone: any;
+interface Type extends Function {
+  new (...args: any[]): any;
+}
+
+declare module "angular2/test" {
+  class TestComponentBuilder {}
+  class AsyncTestCompleter {}
+  class DebugElement {}
+  class By {}
+  function inject(args: any): any;
+  var browser: any;
+  var $: any;
+  function clickAll(buttonSelectors: any): void;
+  function verifyNoBrowserErrors(): void;
+}
+
+declare module "angular2/pipes" {
+  class ObservablePipe {
+    constructor(ref?: any)
+    _subscription: any;
+    _observable: any;
+    _updateLatestValue(value: any): any;
+    _subscribe(obs: any): any;
+    transform(obs: any, args?: List<any>): any;
+    onDestroy(): void;
+  }
+}
 
 declare module "angular2/annotations" {
   var Component: any;
@@ -24,6 +50,9 @@ declare module "angular2/http" {
   class HttpFactory {}
   class MockBackend {
     constructor(req: any)
+  }
+  class Headers {
+    constructor(config: any)
   }
   class XHRBackend {}
   class BaseRequestOptions {}
@@ -261,12 +290,13 @@ declare module "rtts_assert/rtts_assert" {
 }
 
 declare module "angular2/directives" {
-  function NgSwitch(): void;
-  function NgSwitchWhen(): void;
-  function NgSwitchDefault(): void;
-  function NgNonBindable(): void;
-  function NgIf(): void;
-  function NgFor(): void;
+  class NgSwitch {}
+  class NgSwitchWhen {}
+  class NgSwitchDefault {}
+  class NgNonBindable {}
+  class NgIf {}
+  class NgFor {}
+  class CSSClass {}
 
   var formDirectives: any;
   var coreDirectives: any;
@@ -282,23 +312,41 @@ declare module "angular2/src/change_detection/change_detection" {
   var async: any;
 }
 
-declare module "angular2/pipes" {
-  class ObservablePipe {
-    constructor(ref: any)
+declare module "angular2/change_detection" {
+  interface PipeFactory {}
+  interface Pipe {
+    supports(obj: any): boolean;
+    onDestroy(): void;
+    transform(value: any, args: List<any>): any;
+  }
+  class Pipes {
+    static extend(pipes: any)
+  }
+  class NullPipeFactory {}
+  class PipeRegistry {
+    constructor(pipes: any);
+  }
+  class WrappedValue {
+    static wrap(...args): any
+  }
+  class ChangeDetectorRef {
+    requestCheck(): void;
+  }
+  class ObservablePipe implements Pipe {
+    constructor(ref: any);
     _subscription: any;
     _observable: any;
     _updateLatestValue(value: any): any;
-    _subscribe(obs: any): any;
-  }
-}
+    _subscribe(obs: any): void;
 
-declare module "angular2/change_detection" {
-  interface PipeFactory {}
-  interface Pipe {}
-  class BasePipe implements Pipe {}
-  class NullPipeFactory {}
-  class PipeRegistry {
-    constructor(pipes: any)
+    _latestValue: any;
+    _latestReturnedValue: any;
+
+    _dispose(): void;
+
+    supports(obj: any): boolean;
+    onDestroy(): void;
+    transform(value: any, args: List<any>): any;
   }
   var defaultPipeRegistry: any;
   var defaultPipes: any;
@@ -326,6 +374,7 @@ declare module "angular2/src/core/zone/ng_zone" {
   class NgZone {
     constructor(config: any)
     initCallbacks(config: any): any
+    runOutsideAngular(context: any): any;
     run(context: any): any
   }
 }
@@ -626,33 +675,22 @@ declare module "angular2/src/core/compiler/directive_resolver" {
   }
 }
 
-declare module "angular2/router" {
-  class Instruction {
-
-  }
-  class Router {
-    navigate(url: string): any;
-    config(config: any): any;
-    deactivate(): any;
-    activate(instruction: Instruction): any;
-    recognize(url: string): Instruction;
-    recognize(url: string): Instruction;
-    renavigate(): any;
-    generate(name:string, params:any): string;
-    subscribe(onNext: Function): void;
-  }
-  class LocationStrategy {}
-  class HashLocationStrategy {}
-  class HTML5LocationStrategy {}
-  var RouterOutlet: any;
-  var RouterLink: any;
-  var RouteParams: any;
-  var routerInjectables: any;
-  var RouteConfigAnnotation: any;
-  var RouteConfig: any;
-  var routerDirectives: any;
+declare module "angular2/src/router/route_registry" {
+  class RouteRegistry {}
 }
 
+declare module "angular2/src/router/pipeline" {
+  class Pipeline {}
+}
+
+declare module "angular2/src/router/instruction" {
+  class Instruction {
+    component: any;
+    params: any;
+    reuse: any;
+    child: any;
+  }
+}
 
 declare module "angular2/src/dom/browser_adapter" {
     class BrowserDomAdapter {

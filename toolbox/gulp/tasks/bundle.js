@@ -8,10 +8,14 @@ var plumber = require('../utils').plumber;
 var size = require('gulp-size');
 var cfg = require('../config');
 
-
-gulp.task('bundle:app', "-- Bundle all dependancies into a single file.", function () {
-  return browserify(cfg.js.app.bundle.entrypoint, { debug: true })
-    .bundle()
-    .pipe(source(cfg.js.app.bundle.filename))
-    .pipe(gulp.dest(cfg.js.app.bundle.outputDir));
+gulp.task('build-js', function() {  
+    var b = browserify({
+        entries: cfg.js.app.bundle.entry,
+        debug: true,
+        paths: [cfg.dist.dev.baseDir],
+    });
+ 
+    return b.bundle()
+        .pipe(source(cfg.js.app.bundle.filename))
+        .pipe(gulp.dest(cfg.dist.dev.baseDir));
 });
