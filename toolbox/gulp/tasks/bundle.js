@@ -9,13 +9,13 @@ var size = require('gulp-size');
 var cfg = require('../config');
 
 gulp.task('build-js', function() {  
-    var b = browserify({
+    var bfy = browserify({
         entries: cfg.js.app.bundle.entry,
         debug: true,
         paths: [cfg.dist.dev.baseDir],
     });
  
-    return b.bundle()
+    return bfy.bundle()
         .pipe(source(cfg.js.app.bundle.filename))
         .pipe(gulp.dest(cfg.dist.dev.baseDir));
 });
