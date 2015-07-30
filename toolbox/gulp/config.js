@@ -16,7 +16,7 @@ var DIR = {
   testDir: './src/test/',
   gulpDir: './toolbox/gulp/',
   typingsDir: './toolbox/typings/',
-  nodeDir: './node_modules'
+  nodeDir: './node_modules/'
 };
 
 var GULP = {
@@ -59,15 +59,24 @@ var TYPESCRIPT = {
   },
 };
 
+var LIB = {
+  angular: {
+    bundle: {
+      enties: [
+        DIR.nodeDir + 'angular2/angular2.js',
+        DIR.nodeDir + 'angular2/router.js'
+      ],
+      filename: 'lib.js',
+      outputDir: DIST.prod.baseDir
+    },
+  }
+};
+
 var JAVASCRIPT = {
   app: {
     bundle: {
-      globs: {
-        lib: DIR.nodeDir + 'angular2/**/*.js',
-        core: DIST.dev.baseDir + '**/*.js'
-      },
-      entry: DIST.dev.baseDir +'bootstrap.js',
-      filename: 'bundle.js',
+      entry: DIST.dev.baseDir + 'bootstrap.js',
+      filename: 'app.js',
       outputDir: DIST.prod.baseDir
     },
   }
@@ -104,5 +113,6 @@ module.exports = {
   js: JAVASCRIPT,
   img: IMAGE,
   html: HTML,
-  style: STYLE
+  style: STYLE,
+  lib: LIB
 };
