@@ -60,16 +60,31 @@ var TYPESCRIPT = {
 };
 
 var LIB = {
-  angular: {
-    bundle: {
-      enties: [
-        DIR.nodeDir + 'angular2/angular2.js',
-        DIR.nodeDir + 'angular2/router.js'
-      ],
-      filename: 'lib.js',
-      outputDir: DIST.prod.baseDir
-    },
-  }
+  ol: [
+    DIR.nodeDir + 'angular2/node_modules/traceur/bin/traceur-runtime.js',
+    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader-sans-promises.js',
+    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader-sans-promises.js.map',
+    DIR.nodeDir + 'reflect-metadata/Reflect.js',
+    DIR.nodeDir + 'reflect-metadata/Reflect.js.map',
+    DIR.nodeDir + 'systemjs/dist/system.src.js',
+    DIR.nodeDir + 'angular2/node_modules/zone.js/dist/zone.js'
+  ]
+};
+
+var ANGULAR = {
+  paths: {
+    'angular2/*': DIR.nodeDir + '/angular2/es6/dev/*.js',
+    'rx': DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
+  },
+  meta: {
+    rx: {
+      format: 'cjs'
+    }
+  },
+  files: [
+    'angular2/angular2',
+    'angular2/router'
+  ]
 };
 
 var JAVASCRIPT = {
@@ -114,5 +129,6 @@ module.exports = {
   img: IMAGE,
   html: HTML,
   style: STYLE,
-  lib: LIB
+  lib: LIB,
+  ng: ANGULAR
 };
