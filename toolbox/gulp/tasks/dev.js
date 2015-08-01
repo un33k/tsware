@@ -14,7 +14,7 @@ gulp.task('build:lib:dev', "-- Build libs, development version.", function () {
     .pipe(gulp.dest(cfg.dist.dev.libDir));
 });
 
-gulp.task('set:index:dev', "-- Inject libs path into index.html", function () {
+gulp.task('inject:js:index:dev', "-- Inject libs path into index.html", function () {
 
   var target = gulp.src(cfg.html.indexFile);
   var libs = gulp.src(cfg.lib.ol, { read: false });
@@ -30,5 +30,5 @@ gulp.task('set:index:dev', "-- Inject libs path into index.html", function () {
 
 
 gulp.task('build:assets:dev', "-- Build assets, development version.", function (fcb) {
-  runSequence(['set:libs:path:dev', 'style:copy'], 'html:copy', fcb);
+  runSequence(['html:copy', 'style:copy'], 'inject:js:index:dev', fcb);
 });
