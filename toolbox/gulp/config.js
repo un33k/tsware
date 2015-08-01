@@ -71,8 +71,8 @@ var LIB = {
 
 var ANGULAR = {
   vendorPaths: {
-    'angular2/*': DIR.nodeDir + '/angular2/es6/dev/*.js',
-    'rx': DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
+    'angular2/*': DIR.nodeDir + 'angular2/es6/prod/*.js',
+    rx: DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
   },
   libMeta: {
     rx: {

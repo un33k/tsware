@@ -30,7 +30,7 @@ var ng2AppBuilder = new Builder({
   meta: cfg.ng.appMeta
 });
 
-var ng2SetBuildEnv = function (path) {
+var ng2Build = function (path) {
 	var ret, name, dest;
 	cfg.ng.modules.forEach(function (mod) {
 		name = 'angular2/' + mod;
@@ -56,7 +56,7 @@ module.exports = {
 	plumber: plumber,
 	ng2LibBuilder: ng2LibBuilder,
 	ng2AppBuilder: ng2AppBuilder,
-	ng2SetBuildEnv: ng2SetBuildEnv,
+	ng2Build: ng2Build,
 	tsProject: tsProject,
 	tsdTransform: tsdTransform,
 	jsTransform: jsTransform,

@@ -5,6 +5,6 @@ var utils = require('../utils');
 var cfg = require('../config');
 
 
-gulp.task('set:ng2:dev', "-- Setup build object for `dev` environment.", function () {
-	return utils.ng2SetBuildEnv(cfg.dist.dev.libDir);
+gulp.task('build:ng2:dev', "-- Setup build object for `dev` environment.", function () {
+	return utils.ng2Build(cfg.dist.dev.libDir);
 });
