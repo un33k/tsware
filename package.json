@@ -48,6 +48,7 @@
     "imagemin-pngquant": "^4.1.2",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1",
+    "systemjs-builder": "^0.12.2",
     "tsd": "0.5.7",
     "typescript": "^1.5.0-beta",
     "vinyl-source-stream": "^1.1.0"

@@ -72,18 +72,22 @@ var LIB = {
 };
 
 var ANGULAR = {
-  paths: {
+  vendorPaths: {
     'angular2/*': DIR.nodeDir + '/angular2/es6/dev/*.js',
     'rx': DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
   },
-  meta: {
+  libMeta: {
     rx: {
       format: 'cjs'
     }
   },
-  files: [
-    'angular2/angular2',
-    'angular2/router'
+  appMeta: {
+    'angular2/angular2': { build: false },
+    'angular2/router': { build: false }
+  },
+  modules: [
+    'angular2',
+    'router'
   ]
 };
 

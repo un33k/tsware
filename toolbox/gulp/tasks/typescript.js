@@ -6,13 +6,9 @@ var lint = require('gulp-tslint');
 var size = require('gulp-size');
 var inject = require('gulp-inject');
 var tsc = require('gulp-typescript');
-var plumber = require('../utils').plumber;
+var utils = require('../utils');
 var cfg = require('../config');
 
-
-var tsProject = tsc.createProject('tsconfig.json', {
-  typescript: require('typescript')
-});
 
 gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
   var source = [
@@ -20,8 +16,8 @@ gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
     cfg.ts.globs.lib,
   ];
   return gulp.src(source)
-    .pipe(plumber())
-    .pipe(tsc(tsProject))
+    .pipe(utils.plumber())
+    .pipe(tsc(utils.tsProject))
     .js.pipe(gulp.dest(cfg.dist.dev.baseDir))
     .pipe(size({ title: "Generated javascript files" }));
 });
@@ -29,7 +25,7 @@ gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
 gulp.task('tsl:app', "-- Lints app's typescript files.", function () {
   return gulp
     .src(cfg.ts.globs.app)
-    .pipe(plumber())
+    .pipe(utils.plumber())
     .pipe(lint())
     .pipe(lint.report('verbose'));
 });
