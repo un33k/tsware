@@ -45,7 +45,7 @@ var tsdTransform = function (path) {
 };
 
 var jsTransform = function (path) {
-	return '<script src="' + path + '"></script>';
+	return '<script src="/lib/' + path.split('/').pop() + '"></script>';
 };
 
 var cssTransform = function (path) {
