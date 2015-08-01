@@ -110,6 +110,7 @@ var IMAGE = {
 
 var HTML = {
   baseDir: DIR.appDir,
+  indexFile: DIR.appDir + "index.html",
   src: {
     app: DIR.appDir + "**/*.html"
   }
