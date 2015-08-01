@@ -6,6 +6,7 @@ var lint = require('gulp-tslint');
 var size = require('gulp-size');
 var inject = require('gulp-inject');
 var tsc = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
 var utils = require('../utils');
 var cfg = require('../config');
 
@@ -15,10 +16,14 @@ gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
     cfg.ts.globs.app,
     cfg.ts.globs.lib,
   ];
-  return gulp.src(source)
+  var result = gulp.src(source)
     .pipe(utils.plumber())
-    .pipe(tsc(utils.tsProject))
-    .js.pipe(gulp.dest(cfg.dist.dev.baseDir))
+    .pipe(sourcemaps.init())
+    .pipe(tsc(utils.tsProject));
+
+  return result.js
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(cfg.dist.dev.baseDir))
     .pipe(size({ title: "Generated javascript files" }));
 });
 
