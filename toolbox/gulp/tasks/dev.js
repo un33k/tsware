@@ -11,3 +11,6 @@ gulp.task('build:lib:dev', "-- Build libs, development version.", function () {
   return gulp.src(cfg.lib.ol)
     .pipe(gulp.dest(cfg.dist.dev.libDir));
 });
+
+gulp.task('build:assets:dev', "-- Build assets, development version.", ['html:copy', 'style:copy']);
+
