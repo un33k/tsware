@@ -19,11 +19,9 @@ gulp.task('set:index:dev', "-- Inject libs path into index.html", function () {
   var target = gulp.src(cfg.html.indexFile);
   var libs = gulp.src(cfg.lib.ol, { read: false });
   var options = {
-    starttag: '<!-- block:libs:js -->',
-    endtag: '<!-- endblock:libs:js -->',
-    transform: function (path) {
-      return '<script src="' + path + '"></script>';
-    }
+    starttag: cfg.block.index.js.start,
+    endtag: cfg.block.index.js.end,
+    transform: utils.jsTransform
   }
   return target
     .pipe(inject(libs, options))

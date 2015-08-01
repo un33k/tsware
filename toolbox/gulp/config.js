@@ -62,12 +62,10 @@ var TYPESCRIPT = {
 var LIB = {
   ol: [
     DIR.nodeDir + 'angular2/node_modules/traceur/bin/traceur-runtime.js',
-    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader-sans-promises.js',
-    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader-sans-promises.js.map',
+    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader.js',
     DIR.nodeDir + 'reflect-metadata/Reflect.js',
-    DIR.nodeDir + 'reflect-metadata/Reflect.js.map',
-    DIR.nodeDir + 'systemjs/dist/system.src.js',
-    DIR.nodeDir + 'angular2/node_modules/zone.js/dist/zone.js'
+    DIR.nodeDir + 'systemjs/dist/system.js',
+    DIR.nodeDir + 'zone.js/dist/zone.js'
   ]
 };
 
@@ -123,6 +121,22 @@ var STYLE = {
   }
 };
 
+var BLOCK = {
+  tsd: {
+    start: '//{',
+    end: '//}'
+  },
+  index: {
+    js: {
+      start: '<!-- block:libs:js -->',
+		  end: '<!-- endblock:libs:js -->'
+    },
+    css: {
+      start: '<!-- block:libs:css -->',
+		  end: '<!-- endblock:libs:css -->'
+    }
+  }
+};
 
 module.exports = {
   ext: EXT,
@@ -135,5 +149,6 @@ module.exports = {
   html: HTML,
   style: STYLE,
   lib: LIB,
-  ng: ANGULAR
+  ng: ANGULAR,
+  block: BLOCK
 };

@@ -39,11 +39,9 @@ gulp.task('tsg:refs', "-- Generates app's typescript references file.", function
   var target = gulp.src(cfg.ts.refs.appFile);
   var sources = gulp.src([cfg.ts.globs.app], { read: false });
   var options = {
-    starttag: '//{',
-    endtag: '//}',
-    transform: function (path) {
-      return '/// <reference path="../..' + path + '" />';
-    }
+    starttag: cfg.block.tsd.start,
+    endtag: cfg.block.tsd.end,
+    transform: utils.tsdTransform
   }
   return target
     .pipe(inject(sources, options))

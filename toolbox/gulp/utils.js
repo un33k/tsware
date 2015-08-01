@@ -30,7 +30,7 @@ var ng2AppBuilder = new Builder({
   meta: cfg.ng.appMeta
 });
 
-var ng2SetBuildEnv = function(path){
+var ng2SetBuildEnv = function (path) {
 	var ret, name, dest;
 	cfg.ng.modules.forEach(function (mod) {
 		name = 'angular2/' + mod;
@@ -38,12 +38,27 @@ var ng2SetBuildEnv = function(path){
 		ret = ng2LibBuilder.build(name, dest, {});
 	});
 	return ret;
-}
+};
+
+var tsdTransform = function (path) {
+	return '/// <reference path="../..' + path + '" />';
+};
+
+var jsTransform = function (path) {
+	return '<script src="' + path + '"></script>';
+};
+
+var cssTransform = function (path) {
+	return '<link rel="stylesheet" type="text/css" href="' + path + '">';
+};
 
 module.exports = {
 	plumber: plumber,
 	ng2LibBuilder: ng2LibBuilder,
 	ng2AppBuilder: ng2AppBuilder,
 	ng2SetBuildEnv: ng2SetBuildEnv,
-	tsProject: tsProject
+	tsProject: tsProject,
+	tsdTransform: tsdTransform,
+	jsTransform: jsTransform,
+	cssTransform: cssTransform
 };
