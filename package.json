@@ -22,13 +22,15 @@
   "dependencies": {
     "angular2": "^2.0.0-alpha.33",
     "es6-shim": "^0.32.2",
-    "reflect-metadata": "^0.1.0"
+    "reflect-metadata": "^0.1.0",
+    "systemjs": "^0.18.4",
+    "zone.js": "^0.5.2",
+    "es6-module-loader": "^0.17.3"
   },
   "devDependencies": {
     "browser-sync": "^2.7.13",
     "browserify": "^11.0.0",
     "del": "^1.1.1",
-    "es6-module-loader": "^0.17.3",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.0.1",
     "gulp-file": "^0.2.0",
@@ -48,11 +50,8 @@
     "imagemin-pngquant": "^4.1.2",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1",
-    "systemjs": "^0.18.4",
     "systemjs-builder": "^0.12.2",
     "tsd": "0.5.7",
-    "typescript": "^1.5.3",
-    "vinyl-source-stream": "^1.1.0",
-    "zone.js": "^0.5.2"
+    "typescript": "^1.5.3"
   }
 }
