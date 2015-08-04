@@ -21,18 +21,20 @@ var tsProject = tsc.createProject('tsconfig.json', {
 });
 
 var ng2LibBuilder = new Builder({
+	defaultJSExtensions: true,
 	paths: cfg.ng.vendorPaths,
 	meta: cfg.ng.libMeta,
 });
 
 var ng2AppBuilder = new Builder({
+	defaultJSExtensions: true,
   baseURL: cfg.dir.tmpDir,
   meta: cfg.ng.appMeta
 });
 
 var ng2Build = function (path) {
 	var ret, name, dest;
-	cfg.ng.modules.forEach(function (mod) {
+	cfg.ng.ng2Modules.forEach(function (mod) {
 		name = 'angular2/' + mod;
 		dest = path + mod + cfg.ext.js;
 		ret = ng2LibBuilder.build(name, dest, {});

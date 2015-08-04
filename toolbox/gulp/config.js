@@ -72,18 +72,18 @@ var LIB = {
 var ANGULAR = {
   vendorPaths: {
     'angular2/*': DIR.nodeDir + 'angular2/es6/prod/*.js',
-    rx: DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
+    'rx': DIR.nodeDir + 'angular2/node_modules/rx/dist/rx.js'
   },
   libMeta: {
-    rx: {
-      format: 'cjs'
+    'rx': {
+      format: 'cjs' // https://github.com/systemjs/builder/issues/123
     }
   },
   appMeta: {
     'angular2/angular2': { build: false },
     'angular2/router': { build: false }
   },
-  modules: [
+  ng2Modules: [
     'angular2',
     'router'
   ]

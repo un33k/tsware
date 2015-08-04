@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var debug = require('gulp-debug');
 var browserify = require('browserify');
-var source = require('vinyl-source-stream');
 var plumber = require('../utils').plumber;
 var size = require('gulp-size');
 var cfg = require('../config');
