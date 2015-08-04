@@ -45,5 +45,5 @@ gulp.task('tsg:refs', "-- Generates app's typescript references file.", function
   }
   return target
     .pipe(inject(sources, options))
-    .pipe(gulp.dest(cfg.ts.typings.baseDir));
+    .pipe(gulp.dest(cfg.ts.typings.customDir));
 });

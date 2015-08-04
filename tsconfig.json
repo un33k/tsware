@@ -15,8 +15,8 @@
     "experimentalDecorators": true   
   },
   "filesGlob": [
-    "toolbox/typings/tsd",
-    "toolbox/typings/custom.d.ts",
-    "toolbox/typings/app.d.ts"
+    "toolbox/typings/tsd/tsd.d.ts",
+    "toolbox/typings/custom/custom.d.ts",
+    "toolbox/typings/custom/app.d.ts"
   ]
 }

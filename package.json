@@ -39,6 +39,7 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-inject": "^1.1.1",
     "gulp-plumber": "^1.0.1",
+    "gulp-rimraf": "^0.1.1",
     "gulp-run": "^1.6.8",
     "gulp-shell": "^0.4.2",
     "gulp-size": "^1.2.3",
