@@ -21,11 +21,11 @@
   "homepage": "https://github.com/un33k/tsware",
   "dependencies": {
     "angular2": "^2.0.0-alpha.33",
+    "es6-module-loader": "^0.17.3",
     "es6-shim": "^0.32.2",
     "reflect-metadata": "^0.1.0",
     "systemjs": "^0.18.4",
-    "zone.js": "^0.5.2",
-    "es6-module-loader": "^0.17.3"
+    "zone.js": "^0.5.2"
   },
   "devDependencies": {
     "browser-sync": "^2.7.13",
@@ -35,6 +35,7 @@
     "gulp-debug": "^2.0.1",
     "gulp-file": "^0.2.0",
     "gulp-help": "^1.6.0",
+    "gulp-ignore": "^1.2.1",
     "gulp-imagemin": "^2.3.0",
     "gulp-inject": "^1.1.1",
     "gulp-plumber": "^1.0.1",
@@ -49,6 +50,7 @@
     "gulp-watch": "^4.2.4",
     "imagemin-pngquant": "^4.1.2",
     "require-dir": "^0.3.0",
+    "rimraf": "^2.4.2",
     "run-sequence": "^1.1.1",
     "systemjs-builder": "^0.12.2",
     "tsd": "0.5.7",

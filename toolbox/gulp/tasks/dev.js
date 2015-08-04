@@ -9,7 +9,7 @@ var runSequence = require('run-sequence');
 var cfg = require('../config');
 
 gulp.task('build:lib:dev', "-- Build libs, development version.", function () {
-  utils.ng2SetBuildEnv(cfg.dist.dev.libDir);
+  utils.ng2Build(cfg.dist.dev.libDir);
   return gulp.src(cfg.lib.ol)
     .pipe(gulp.dest(cfg.dist.dev.libDir));
 });
@@ -28,7 +28,11 @@ gulp.task('inject:js:index:dev', "-- Inject libs path into index.html", function
     .pipe(gulp.dest(cfg.dist.dev.htmlDir));
 });
 
-
 gulp.task('build:assets:dev', "-- Build assets, development version.", function (fcb) {
   runSequence(['html:copy', 'style:copy'], 'inject:js:index:dev', fcb);
 });
+
+gulp.task('build.app.dev', function (done) {
+  runSequence('clean.app.dev', 'build.assets.dev', 'build.index.dev', done);
+});
+

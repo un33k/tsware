@@ -23,7 +23,7 @@ gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
 
   return result.js
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(cfg.dist.dev.baseDir))
+    .pipe(gulp.dest(cfg.dist.dev.appDir))
     .pipe(size({ title: "Generated javascript files" }));
 });
 

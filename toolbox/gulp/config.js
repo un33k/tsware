@@ -5,7 +5,18 @@ var EXT = {
   ts: '.ts',
   css: '.css',
   html: '.html',
-  sass: '.scss'
+  sass: '.scss',
+  map: '.map'
+};
+
+var GLOB = {
+  all: '**/*',
+  js: '**/*' + EXT.js,
+  ts: '**/*' + EXT.ts,
+  css: '**/*' + EXT.css,
+  html: '**/*' + EXT.html,
+  sass: '**/*' + EXT.scss,
+  map: '**/*' + EXT.map
 };
 
 var DIR = {
@@ -30,16 +41,18 @@ var DIST = {
   dev: {
     baseDir: DIR.distDir + 'dev/',
     libDir: DIR.distDir + 'dev/lib/',
-    imgDir: DIR.distDir + 'dev/img/',
-    styleDir: DIR.distDir + 'dev/style/',
-    htmlDir: DIR.distDir + 'dev/'
+    appDir: DIR.distDir + 'dev/app/',
+    imgDir: DIR.distDir + 'dev/app/img/',
+    styleDir: DIR.distDir + 'dev/app/style/',
+    htmlDir: DIR.distDir + 'dev/app/'
   },
   prod: {
     baseDir: DIR.distDir + 'prod',
     libDir: DIR.distDir + 'prod/lib/',
-    imgDir: DIR.distDir + 'prod/img/',
-    styleDir: DIR.distDir + 'prod/style/',
-    htmlDir: DIR.distDir + 'prod/'
+    appDir: DIR.distDir + 'prod/app/',
+    imgDir: DIR.distDir + 'prod/app/img/',
+    styleDir: DIR.distDir + 'prod/app/style/',
+    htmlDir: DIR.distDir + 'prod/app/'
   }
 };
 
@@ -53,9 +66,9 @@ var TYPESCRIPT = {
     customFile: DIR.typingsDir + 'custom.d.ts'
   },
   globs: {
-    app: DIR.appDir + '**/*.ts',
-    test: DIR.testDir + '**/*.ts',
-    lib: DIR.typingsDir + '**/*.ts'
+    app: DIR.appDir + GLOB.ts,
+    test: DIR.testDir + GLOB.ts,
+    lib: DIR.typingsDir + GLOB.ts
   },
 };
 
@@ -129,17 +142,18 @@ var BLOCK = {
   index: {
     js: {
       start: '<!-- block:libs:js -->',
-		  end: '<!-- endblock:libs:js -->'
+      end: '<!-- endblock:libs:js -->'
     },
     css: {
       start: '<!-- block:libs:css -->',
-		  end: '<!-- endblock:libs:css -->'
+      end: '<!-- endblock:libs:css -->'
     }
   }
 };
 
 module.exports = {
   ext: EXT,
+  glob: GLOB,
   dir: DIR,
   gulp: GULP,
   dist: DIST,

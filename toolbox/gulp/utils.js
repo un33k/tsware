@@ -54,6 +54,10 @@ var cssTransform = function (path) {
 	return '<link rel="stylesheet" type="text/css" href="' + path + '">';
 };
 
+var exclude = function (path) {
+	return '!' + path;
+};
+
 module.exports = {
 	plumber: plumber,
 	ng2LibBuilder: ng2LibBuilder,
@@ -62,5 +66,6 @@ module.exports = {
 	tsProject: tsProject,
 	tsdTransform: tsdTransform,
 	jsTransform: jsTransform,
-	cssTransform: cssTransform
+	cssTransform: cssTransform,
+	exclude: exclude
 };
