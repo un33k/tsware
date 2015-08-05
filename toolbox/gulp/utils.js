@@ -26,10 +26,6 @@ var tsdTransform = function (path) {
 	return '/// <reference path="../../..' + path + '" />';
 };
 
-var jsInjectTransform = function (path) {
-	return '<script src="' + path.split(cfg.dist.dev.libDir).pop() + '"></script>';
-};
-
 var cssTransform = function (path) {
 	return '<link rel="stylesheet" type="text/css" href="' + path + '">';
 };
@@ -42,7 +38,6 @@ module.exports = {
 	plumber: plumber,
 	ng2AppBuilder: ng2AppBuilder,
 	tsdTransform: tsdTransform,
-	jsInjectTransform: jsInjectTransform,
 	cssTransform: cssTransform,
 	exclude: exclude
 };
