@@ -9,9 +9,7 @@ var runSequence = require('run-sequence');
 var cfg = require('../config');
 
 gulp.task('build:lib:dev', "-- Build libs, development version.", function () {
-  utils.ng2Build(cfg.dist.dev.libDir);
-  return gulp.src(cfg.lib.ol)
-    .pipe(gulp.dest(cfg.dist.dev.libDir));
+  return gulp.src(cfg.lib.ol).pipe(gulp.dest(cfg.dist.dev.libDir));
 });
 
 gulp.task('inject:js:index:dev', "-- Inject libs path into index.html", function () {

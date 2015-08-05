@@ -12,11 +12,11 @@ gulp.task('clean:all', "-- Clean all generated files.", function (done) {
   rimraf(cfg.dist.baseDir, done);
 });
 
-gulp.task('clean:dev:all', "-- Clean all development specific generated files.", function (done) {
+gulp.task('clean:all:dev', "-- Clean all development specific generated files.", function (done) {
   rimraf(cfg.dist.dev.baseDir, done);
 });
 
-gulp.task('clean:dev:app', "-- Clean app's development specific generated files.", function (done) {
+gulp.task('clean:app:dev', "-- Clean app's development specific generated files.", function (done) {
   var source = [
     cfg.dist.dev.appDir + cfg.glob.all,
     cfg.js.app.bundle.filename
@@ -25,6 +25,6 @@ gulp.task('clean:dev:app', "-- Clean app's development specific generated files.
     .pipe(grimraf({ force: true }));
 });
 
-gulp.task('clean:prod:all', "-- Clean all production specific generated files.", function (done) {
+gulp.task('clean:all:prod', "-- Clean all production specific generated files.", function (done) {
   rimraf(cfg.dist.prod.baseDir, done);
 });
