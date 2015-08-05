@@ -38,6 +38,6 @@ gulp.task('build:assets:dev', "-- Build assets, development version.", function 
   runSequence(['html:copy', 'style:copy'], 'inject:js:index:dev', fcb);
 });
 
-gulp.task('build:app:dev', function (done) {
-  runSequence('clean:app:dev', 'build:assets:dev', done);
+gulp.task('build:app:dev', function (fcb) {
+  runSequence('clean:app:dev', ['build:assets:dev', 'tsc:app'], fcb);
 });
