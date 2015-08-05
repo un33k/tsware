@@ -12,6 +12,9 @@ var cfg = require('../config');
 
 
 gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
+  var tsProject = tsc.createProject('tsconfig.json', {
+    typescript: require('typescript')
+  });
   var source = [
     cfg.ts.globs.app,
     cfg.ts.globs.lib,
@@ -19,7 +22,7 @@ gulp.task('tsc:app', "-- Transpiles app's typescript files.", function () {
   var result = gulp.src(source)
     .pipe(utils.plumber())
     .pipe(sourcemaps.init())
-    .pipe(tsc(utils.tsProject));
+    .pipe(tsc(tsProject));
 
   return result.js
     .pipe(sourcemaps.write())
