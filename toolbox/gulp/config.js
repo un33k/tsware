@@ -41,18 +41,18 @@ var DIST = {
   dev: {
     baseDir: DIR.distDir + 'dev/',
     libDir: DIR.distDir + 'dev/lib/',
-    appDir: DIR.distDir + 'dev/app/',
-    imgDir: DIR.distDir + 'dev/app/img/',
-    styleDir: DIR.distDir + 'dev/app/style/',
-    htmlDir: DIR.distDir + 'dev/app/'
+    appDir: DIR.distDir + 'dev/',
+    imgDir: DIR.distDir + 'dev/img/',
+    styleDir: DIR.distDir + 'dev/style/',
+    htmlDir: DIR.distDir + 'dev/'
   },
   prod: {
     baseDir: DIR.distDir + 'prod',
     libDir: DIR.distDir + 'prod/lib/',
-    appDir: DIR.distDir + 'prod/app/',
-    imgDir: DIR.distDir + 'prod/app/img/',
-    styleDir: DIR.distDir + 'prod/app/style/',
-    htmlDir: DIR.distDir + 'prod/app/'
+    appDir: DIR.distDir + 'prod/',
+    imgDir: DIR.distDir + 'prod/img/',
+    styleDir: DIR.distDir + 'prod/style/',
+    htmlDir: DIR.distDir + 'prod/'
   }
 };
 

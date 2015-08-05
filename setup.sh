@@ -3,5 +3,6 @@
 echo -e "Setting up your environment. Be patient!"
 echo -e "========================================"
 npm install
-bower install
+npm install tsd -g
 tsd reinstall -os
+bower install
