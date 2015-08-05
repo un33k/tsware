@@ -28,9 +28,6 @@
     "zone.js": "^0.5.2"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.13",
-    "browserify": "^11.0.0",
-    "del": "^1.1.1",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.0.1",
     "gulp-file": "^0.2.0",
@@ -39,6 +36,7 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-inject": "^1.1.1",
     "gulp-plumber": "^1.0.1",
+    "gulp-rimraf": "^0.1.1",
     "gulp-run": "^1.6.8",
     "gulp-shell": "^0.4.2",
     "gulp-size": "^1.2.3",
@@ -53,7 +51,7 @@
     "rimraf": "^2.4.2",
     "run-sequence": "^1.1.1",
     "systemjs-builder": "^0.12.2",
-    "tsd": "0.5.7",
+    "tsd": "0.6.3",
     "typescript": "^1.5.3"
   }
 }

@@ -59,11 +59,12 @@ var DIST = {
 var TYPESCRIPT = {
   typings: {
     baseDir: DIR.typingsDir,
+    customDir: DIR.typingsDir + 'custom/'
   },
   refs: {
-    libFile: DIR.typingsDir + 'tsd.d.ts',
-    appFile: DIR.typingsDir + 'app.d.ts',
-    customFile: DIR.typingsDir + 'custom.d.ts'
+    libFile: DIR.typingsDir + 'tsd/tsd.d.ts',
+    appFile: DIR.typingsDir + 'custom/app.d.ts',
+    customFile: DIR.typingsDir + 'custom/custom.d.ts'
   },
   globs: {
     app: DIR.appDir + GLOB.ts,

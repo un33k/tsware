@@ -12,7 +12,7 @@ gulp.task('build:lib:dev', "-- Build libs, development version.", function () {
   return gulp.src(cfg.lib.ol).pipe(gulp.dest(cfg.dist.dev.libDir));
 });
 
-gulp.task('inject:js:index:dev', "-- Inject libs path into index.html", function () {
+gulp.task('inject:js:index:dev', "-- Inject libs path into index.html.", function () {
 
   var target = gulp.src(cfg.html.indexFile);
   var libs = gulp.src(cfg.lib.ol, { read: false });

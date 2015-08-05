@@ -43,7 +43,7 @@ var ng2Build = function (path) {
 };
 
 var tsdTransform = function (path) {
-	return '/// <reference path="../..' + path + '" />';
+	return '/// <reference path="../../..' + path + '" />';
 };
 
 var jsTransform = function (path) {
