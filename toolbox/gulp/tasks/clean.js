@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var debug = require('gulp-debug');
-var ignore = require('gulp-ignore');
 var del = require('del');
 var utils = require('../utils');
 var cfg = require('../config');

@@ -2,10 +2,9 @@
 
 var gulp = require('gulp');
 var debug = require('gulp-debug');
-var utils = require('../utils');
-var size = require('gulp-size');
 var inject = require('gulp-inject');
 var join = require('path').join;
+var watch = require('gulp-watch');
 var runseq = require('run-sequence');
 var cfg = require('../config');
 
@@ -48,4 +47,12 @@ gulp.task('build:app:dev', "-- Build application, development version.", functio
 
 gulp.task('build:dev', "-- Build everything, development version.", function (fcb) {
   runseq('clean:all:dev', 'build:lib:dev', 'build:app:dev', fcb);
+});
+
+
+gulp.task('serve:dev', "-- Build dev fully and serve, then watch and rebuild application.", function (fcb) {
+  runseq('build:dev');
+  watch('./src/**', function (fcb) {
+    runseq('build:app:dev');
+  });
 });

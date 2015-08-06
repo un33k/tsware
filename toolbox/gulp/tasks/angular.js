@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var Builder = require('systemjs-builder');
-var utils = require('../utils');
 var cfg = require('../config');
 
 

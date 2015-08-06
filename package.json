@@ -44,7 +44,7 @@
     "gulp-tslint": "^1.4.3",
     "gulp-typescript": "~2.7.8",
     "gulp-util": "^3.0.6",
-    "gulp-watch": "^4.2.4",
+    "gulp-watch": "^4.3.4",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1",
     "systemjs-builder": "^0.12.2",
