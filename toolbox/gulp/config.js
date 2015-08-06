@@ -76,7 +76,7 @@ var TYPESCRIPT = {
 var LIB = {
   ol: [
     DIR.nodeDir + 'angular2/node_modules/traceur/bin/traceur-runtime.js',
-    DIR.nodeDir + 'es6-module-loader/dist/es6-.js',
+    DIR.nodeDir + 'es6-module-loader/dist/es6-module-loader.js',
     DIR.nodeDir + 'reflect-metadata/Reflect.js',
     DIR.nodeDir + 'systemjs/dist/system.js',
     DIR.nodeDir + 'zone.js/dist/zone.js'
