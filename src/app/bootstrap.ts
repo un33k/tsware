@@ -1,13 +1,12 @@
-import "reflect-metadata";
-import "es6-shim";
+System.config({
+  baseURL: '/',
+  paths: {
+    'angular2/*': 'lib/*.js',
+    'common/*': 'common/*.js',
+    'component/*': 'component/*.js',
+    '*': '*.js',
+  }
+});
 
-import {bootstrap, bind} from 'angular2/angular2';
-import {commonInjectables} from './common/injectables';
-import {App} from './app';
-
-bootstrap(App, [
-    commonInjectables
-  ]).then(
-    success => console.log(success),
-    error => console.log(error)
-);
+System.import('app')
+  .catch(e => console.error(e, 'Error'));
