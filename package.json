@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/un33k/tsware",
   "dependencies": {
-    "angular2": "^2.0.0-alpha.33",
+    "angular2": "^2.0.0-alpha.34",
     "es6-module-loader": "^0.17.3",
     "es6-shim": "^0.32.2",
     "reflect-metadata": "^0.1.0",
