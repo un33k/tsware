@@ -22,22 +22,36 @@ var ng2AppBuilder = new Builder({
   meta: cfg.ng.appMeta
 });
 
-var tsdTransform = function (path) {
+function tsdTransform (path) {
 	return '/// <reference path="../../..' + path + '" />';
 };
 
-var cssTransform = function (path) {
+function cssTransform (path) {
 	return '<link rel="stylesheet" type="text/css" href="' + path + '">';
 };
 
-var exclude = function (path) {
+function excludePath(path) {
 	return '!' + path;
 };
+
+function sequenceCallback(done) {
+	console.log(done)
+  return function (err) {
+    if (err) {
+      var error = new Error('task sequence failed');
+      error.showStack = false;
+      done(error);
+    } else {
+      done();
+    }
+  };
+}
 
 module.exports = {
 	plumber: plumber,
 	ng2AppBuilder: ng2AppBuilder,
 	tsdTransform: tsdTransform,
 	cssTransform: cssTransform,
-	exclude: exclude
+	excludePath: excludePath,
+	sequenceFinished: sequenceCallback
 };

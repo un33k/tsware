@@ -20,7 +20,8 @@ gulp.task('clean:app:dev', "-- Clean app's development specific generated files.
     cfg.dist.dev.baseDir + cfg.glob.js,
     cfg.dist.dev.baseDir + cfg.glob.html,
     cfg.dist.dev.baseDir + cfg.glob.css,
-    utils.exclude(cfg.dist.dev.libDir + cfg.glob.js)
+    utils.excludePath(cfg.dist.dev.libDir + cfg.glob.js),
+    utils.excludePath(cfg.dist.dev.htmlDir + 'index.html')
   ]
   del(source, done);
 });
