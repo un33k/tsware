@@ -6,8 +6,8 @@
 # Directories
 node_modules
 bower_components
-/docs/bower_components/
-/dist/
+docs/bower_components/
+dist/
 
 # Build log
 .buildlog
